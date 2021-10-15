@@ -1,0 +1,362 @@
+- platform: template
+  sensors:
+    dishwaser:
+      friendly_name: Dishwasher
+      value_template: "{{ state_attr('sensor.dishwasher_vibration_action', 'strength') }}"
+    bedroom_temperature: 
+      friendly_name: "Bedroom temperature"
+      value_template: "{{ state_attr('climate.master_bedroom_aircon', 'current_temperature') }}"
+      unit_of_measurement: "°C"
+    living_room_temperature:
+      friendly_name: "Living Room temperature"
+      value_template: "{{ state_attr('climate.living_room_aircon', 'current_temperature') }}"
+      unit_of_measurement: "°C"
+    henrys_room_temperature:
+      friendly_name: "Henry Room temperature"
+      value_template: "{{ state_attr('climate.henrys_room_aircon', 'current_temperature') }}"
+      unit_of_measurement: "°C"
+    office_temperature:
+      friendly_name: "Office temperature"
+      value_template: "{{ state_attr('climate.office_aircon', 'current_temperature') }}"
+      unit_of_measurement: "°C"
+    outdoor_temperature:
+      friendly_name: "Outdoor temperature"
+      value_template: "{{ state_attr('climate.living_room_aircon', 'outdoor_temp') }}"
+      unit_of_measurement: "°C"
+    family_home:
+      friendly_name: "Family Home"
+      value_template: >-
+        {{ is_state('device_tracker.life360_damien_seidel', 'home')
+            or is_state('device_tracker.damien_ios', 'home')
+            or is_state('device_tracker.damien_phone', 'home') 
+            or is_state('device_tracker.olia_ios', 'home')
+            or is_state('device_tracker.olias_iphone_2', 'home') 
+            or is_state('sensor.family_status', 'Home') }}
+    family_status:
+      friendly_name: "Family Status"
+      value_template: >-
+        {% if is_state('person.damien', 'home') 
+           or is_state('person.olia', 'home') %}
+          Home
+        {% else %}
+          Away
+        {% endif %}
+    day_night:
+      friendly_name: "Day/Night"
+      value_template: >-
+        {% if is_state('sun.sun', 'above_horizon') %}
+          Day
+        {% else %}
+          Night
+        {% endif %}
+      icon_template: >-
+        {% if is_state('sun.sun', 'above_horizon') %}
+          mdi:weather-sunny
+        {% else %}
+          mdi:weather-night
+        {% endif %}
+    front_door:
+      friendly_name: "Front Door"
+      value_template: >-
+        {% if is_state('binary_sensor.front_door_sensor_contact', 'on') %}
+          Door Open
+        {% else %}
+          Door Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('binary_sensor.front_door_sensor_contact', 'on') %}
+          mdi:door-open
+        {% else %}
+          mdi:door-closed
+        {% endif %}
+    living_room_door:
+      friendly_name: "Living Room Door"
+      value_template: >-
+        {% if is_state('binary_sensor.living_room_sliding_door_sensor_contact', 'on') %}
+          Door Open
+        {% else %}
+          Door Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('binary_sensor.living_room_sliding_door_sensor_contact', 'on') %}
+          mdi:door-open
+        {% else %}
+          mdi:door-closed
+        {% endif %}
+    office_door:
+      friendly_name: "Office Door"
+      value_template: >-
+        {% if is_state('binary_sensor.office_sliding_door_sensor_contact', 'on') %}
+          Door Open
+        {% else %}
+          Door Closed
+        {% endif %}
+      icon_template: >-
+        {% if is_state('binary_sensor.office_sliding_door_sensor_contact', 'on') %}
+          mdi:door-open
+        {% else %}
+          mdi:door-closed
+        {% endif %}
+    damien_status:
+      value_template: '{{ states.input_select.damien_status_dropdown.state }}'
+      friendly_name: 'Damien'
+    olia_status:
+      value_template: '{{ states.input_select.olia_status_dropdown.state }}'
+      friendly_name: 'Olia'
+    home_temperature_average_rounded:
+      friendly_name: "Home Temperature Average"
+      unit_of_measurement: '°C'
+      value_template: "{{ (states('sensor.home_temperature_average') | float ) | round(1) }}"
+    home_pressure_average_rounded:
+      friendly_name: "Home Pressure Average"
+      unit_of_measurement: 'hPa'
+      value_template: "{{ (states('sensor.home_pressure_average') | float ) | round(0) }}"
+    home_humidity_average_rounded:
+      friendly_name: "Home Humidity Average"
+      unit_of_measurement: '%'
+      value_template: "{{ (states('sensor.home_humidity_average') | float ) | round(0) }}"
+    last_alexa:
+      value_template: >
+        {{ expand(states.group.echos) | selectattr('attributes.last_called','eq',True) | map(attribute='entity_id') | first }}
+
+    energy_consumption_total:
+      value_template: "{{ ( states('sensor.kitchen_fridge_smartplug_energy_total')|float + states('sensor.kitchen_diswasher_smartplug_energy_total')|float + states('sensor.server_smartplug_energy_total')|float + states('sensor.gamingrig_smartplug_energy_total')|float + states('sensor.tv_smartplug_energy_total')|float )|round(2) }}"
+    energy_consumption_yesterday:
+      value_template: "{{ ( states('sensor.kitchen_fridge_smartplug_energy_yesterday')|float + states('sensor.kitchen_diswasher_smartplug_energy_yesterday')|float + states('sensor.server_smartplug_energy_yesterday')|float + states('sensor.gamingrig_smartplug_energy_yesterday')|float + states('sensor.tv_smartplug_energy_yesterday')|float )|round(2) }}"
+    energy_consumption_today:
+      value_template: "{{ ( states('sensor.kitchen_fridge_smartplug_energy_today')|float + states('sensor.kitchen_diswasher_smartplug_energy_today')|float + states('sensor.server_smartplug_energy_today')|float + states('sensor.gamingrig_smartplug_energy_today')|float + states('sensor.tv_smartplug_energy_today')|float )|round(2) }}"
+
+    fridge_cost_total:
+      value_template: "{{ ( states('sensor.kitchen_fridge_smartplug_energy_total')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    fridge_cost_yesterday:
+      value_template: "{{ ( states('sensor.kitchen_fridge_smartplug_energy_yesterday')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    fridge_cost_today:
+      value_template: "{{ ( states('sensor.kitchen_fridge_smartplug_energy_today')|float * states('input_number.energy_cost')|float )|round(2) }}"
+
+    dishwasher_cost_total:
+      value_template: "{{ ( states('sensor.kitchen_dishwasher_smartplug_energy_total')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    dishwasher_cost_yesterday:
+      value_template: "{{ ( states('sensor.kitchen_dishwasher_smartplug_energy_yesterday')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    dishwasher_cost_today:
+      value_template: "{{ ( states('sensor.kitchen_dishwasher_smartplug_energy_today')|float * states('input_number.energy_cost')|float )|round(2) }}"
+
+    server_cost_total:
+      value_template: "{{ ( states('sensor.server_smartplug_energy_total')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    server_cost_yesterday:
+      value_template: "{{ ( states('sensor.server_smartplug_energy_yesterday')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    server_cost_today:
+      value_template: "{{ ( states('sensor.server_smartplug_energy_today')|float * states('input_number.energy_cost')|float )|round(2) }}"
+
+    gamingrig_cost_total:
+      value_template: "{{ ( states('sensor.gamingrig_smartplug_energy_total')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    gamingrig_cost_yesterday:
+      value_template: "{{ ( states('sensor.gamingrig_smartplug_energy_yesterday')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    gamingrig_cost_today:
+      value_template: "{{ ( states('sensor.gamingrig_smartplug_energy_today')|float * states('input_number.energy_cost')|float )|round(2) }}"
+
+    tv_cost_total:
+      value_template: "{{ ( states('sensor.tv_smartplug_energy_total')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    tv_cost_yesterday:
+      value_template: "{{ ( states('sensor.tv_smartplug_energy_yesterday')|float * states('input_number.energy_cost')|float )|round(2) }}"
+    tv_cost_today:
+      value_template: "{{ ( states('sensor.tv_smartplug_energy_today')|float * states('input_number.energy_cost')|float )|round(2) }}"
+
+    total_cost:
+      value_template: "{{ states('sensor.fridge_cost_total')|float + states('sensor.dishwasher_cost_total')|float + states('sensor.server_cost_total')|float + states('sensor.tv_cost_total')|float + states('sensor.gamingrig_cost_total')|float }}"
+    total_cost_yesterday: 
+      value_template: "{{ states('sensor.fridge_cost_yesterday')|float + states('sensor.dishwasher_cost_yesterday')|float + states('sensor.server_cost_yesterday')|float + states('sensor.tv_cost_yesterday')|float + states('sensor.gamingrig_cost_yesterday')|float }}"
+    total_cost_today:
+      value_template: "{{ states('sensor.fridge_cost_today')|float + states('sensor.dishwasher_cost_today')|float + states('sensor.server_cost_today')|float + states('sensor.tv_cost_today')|float + states('sensor.gamingrig_cost_today')|float }}"
+
+- platform: radarr
+  api_key: !secret radarr_api_key
+  host: !secret radarr_host
+  port: !secret radarr_port
+  monitored_conditions:
+    - movies
+    - upcoming
+    - diskspace
+    - commands
+    - status
+  days: 30
+  unit: TB
+
+- platform: radarr_upcoming_media
+  api_key: !secret radarr_api_key
+  host: !secret radarr_host
+  port: !secret radarr_port
+  days: 14
+  ssl: false
+  theaters: false
+  max: 10
+
+- platform: sonarr_upcoming_media
+  api_key: !secret sonarr_api_key
+  host: !secret sonarr_host
+  port: !secret sonarr_port
+  days: 7
+  ssl: false
+  max: 10
+
+- platform: emby_upcoming_media
+  api_key: !secret emby_api_key
+  user_id: !secret emby_user_id
+  host: !secret emby_host
+  port: !secret emby_port
+  ssl: True
+  max: 5
+  use_backdrop: true
+  group_libraries: false
+  include:
+    - Movies
+    - TV Shows
+  
+- platform: qbittorrent
+  url: !secret qbittorrent_host
+  username: !secret qbittorrent_username
+  password: !secret qbittorrent_password
+- platform: openhardwaremonitor
+  host: !secret open_hardware_monitor_host
+
+- platform: min_max
+  name: home_temperature_average
+  type: mean
+  entity_ids:
+    - sensor.livingroom_weather_temperature
+    - sensor.bedroom_weather_temperature
+    - sensor.henrys_room_weather_temperature
+    - sensor.office_weather_temperature
+    - sensor.hallway_motionsensor_temperature
+    - snesor.dining_weather_temperature
+    - sensor.entrance_weather_temperature
+
+- platform: min_max
+  name: home_pressure_average
+  type: mean
+  entity_ids:
+    - sensor.livingroom_weather_pressure
+    - sensor.bedroom_weather_pressure
+    - sensor.henrys_room_weather_pressure
+    - sensor.office_weather_pressure
+    - snesor.dining_weather_pressure
+    - sensor.entrance_weather_pressure
+
+- platform: min_max
+  name: home_humidity_average
+  type: mean
+  entity_ids:
+    - sensor.livingroom_weather_humidity
+    - sensor.bedroom_weather_humidity
+    - sensor.henrys_room_weather_humidity
+    - sensor.office_weather_humidity
+    - snesor.dining_weather_humidity
+    - sensor.entrance_weather_humidity
+- platform: version
+
+- platform: statistics
+  name: power_per_minute
+  entity_id: sensor.kitchen_fridge_smartplug_energy_total
+  sampling_size: 60 # This is assuming you are getting 1 sample a second.  Adjust otherwise.    
+
+- platform: template
+  sensors:
+    realtime_power:
+      friendly_name: Realtime Power
+      value_template: "{{ state_attr('sensor.energy_sensor_statistics', 'mean') / (1000 * 60) }}"
+
+- platform: statistics
+  entity_id: sensor.energy
+  name: Energy Sensor Statistics
+
+- platform: mqtt
+  name: Air Quality - PM 1 um
+  unit_of_measurement: μg/m3
+  state_topic: tele/cfd682/AE1P0
+
+- platform: mqtt
+  name: Air Quality - PM 2.5 um
+  unit_of_measurement: μg/m3
+  state_topic: tele/cfd682/AE2P5
+
+- platform: mqtt
+  name: Air Quality - PM 10 um
+  unit_of_measurement: μg/m3
+  state_topic: tele/cfd682/AE10P0
+
+- platform: mqtt
+  name: Air Quality - Particals 0.3 um
+  unit_of_measurement: ppd
+  state_topic: tele/cfd682/PPD0P3
+
+- platform: mqtt
+  name: Air Quality - Particals 0.5 um
+  unit_of_measurement: ppd
+  state_topic: tele/cfd682/PPD0P5 
+
+- platform: mqtt
+  name: Air Quality - Particals 1 um
+  unit_of_measurement: ppd
+  state_topic: tele/cfd682/PPD1P0
+
+- platform: mqtt
+  name: Air Quality - Particals 2.5 um
+  unit_of_measurement: ppd
+  state_topic: tele/cfd682/PPD2P5
+
+- platform: mqtt
+  name: Air Quality - Particals 5 um
+  unit_of_measurement: ppd
+  state_topic: tele/cfd682/PPD5P0
+
+- platform: mqtt
+  name: Air Quality - Particals 10 um
+  unit_of_measurement: ppd
+  state_topic: tele/cfd682/PPD10P0
+
+- platform: rest
+  name: Kitchen Tablet
+  json_attributes:
+    - isScreenOn
+    - batteryLevel
+    - kioskMode
+    - screenBrightness
+    - motionDetectorState
+    - maintenanceMode
+    - appFreeMemory
+    - appUsedMemory
+    - totalFreeMemory
+    - totalUsedMemory
+    - hostname4
+    - ip4
+    - mac
+    - locationLatitude
+    - locationLongitude
+    - locationAltitude
+    - startUrl
+    - currentPage
+  resource: !secret tablet_info
+  value_template: '{{ value_json.isScreenOn }}'
+  scan_interval: 10
+
+- platform: rest
+  name: Kitchen Tablet Settings
+  json_attributes:
+    - timeToScreenOffV2
+    - screenBrightness
+    - motionSensitivity
+    - motionDection
+    - motionDetectionAcoustic
+    - motionSensitivityAcoustic
+    - screenOffInDarkness
+    - darknessLevel
+  resource: !secret tablet_settings
+  value_template: '{{ value_json.motionSensitivity }}'
+  scan_interval: 10
+
+#- platform: sonarr_upcoming_media
+#  api_key: !secret sonarr_api_key
+#  host: !secret sonarr_host
+#  port: !secret sonarr_port
+#  days: 7
+#  ssl: false
+#  max: 10

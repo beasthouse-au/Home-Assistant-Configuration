@@ -1,0 +1,128 @@
+- platform: group
+  name: Kitchen Lights
+  entities:
+    - light.kitchen_ceiling_1
+    - light.kitchen_ceiling_2
+    - light.kitchen_ceiling_3
+    - light.kitchen_ceiling_4
+- platform: group
+  name: Living Room Lights
+  entities:
+    - light.livingroom_ceiling_1
+    - light.livingroom_ceiling_2
+    - light.livingroom_ceiling_3
+    - light.livingroom_ceiling_4
+- platform: group
+  name: Dining Table Light
+  entities:
+    - light.dining_pendant_up
+    - light.dining_pendant_down
+- platform: group
+  name: Bedroom Lamps
+  entities:
+    - light.bedroom_lamp_left
+    - light.bedroom_lamp_right
+- platform: group
+  name: Bedroom Lamps and LED Strips
+  entities:
+    - light.bedroom_lamps
+    - light.bedroom_led_strips
+- platform: group
+  name: Office Lamps
+  entities:
+    - light.office_lamp_1
+#    - light.office_desk_lamp
+- platform: group
+  name: Sensor Lights
+  entities:
+    - light.balcony_ceiling_1
+    - light.balcony_ceiling_2
+    - light.entrance_ceiling
+- platform: group
+  name: Living Area
+  entities:
+    - light.kitchen_lights
+    - light.dining_table_light
+    - light.living_room_lights
+    - light.hallway_lights
+- platform: group
+  name: Hallway Lights
+  entities:
+    - light.hallway_ceiling_1
+    - light.hallway_ceiling_2
+- platform: group
+  name: Front Door
+  entities:
+    - light.entrance_ceiling
+- platform: group
+  name: Balcony Lights
+  entities:
+    - light.balcony_ceiling_1
+    - light.balcony_ceiling_2
+- platform: group
+  name: Bedroom Lights
+  entities:
+    - light.bedroom_lamps
+    - light.bedroom_pendant
+    - light.bedroom_led_strips
+- platform: group
+  name: Office Lights
+  entities:
+    - light.office_ceiling_1
+    - light.office_ceiling_2
+    - light.office_lamps
+- platform: group
+  name: Bathroom Lights
+  entities:
+    - light.bathroom_ceiling_1
+    - light.bathroom_ceiling_2
+    - light.bathroom_ceiling_3
+    - light.bathroom_ceiling_4
+- platform: group
+  name: Ensuite Lights
+  entities:
+    - light.ensuite_ceiling_1
+    - light.ensuite_ceiling_2
+    - light.ensuite_ceiling_3
+- platform: group
+  name: All Lights
+  entities:
+    - light.living_area
+    - light.office_lights
+    - light.sensor_lights
+    - light.henrys_room_lights
+    - light.bedroom
+    - light.bathroom_lights
+    - light.ensuite_lights
+    - light.ensuite_cabinet_light
+    - light.bathroom_cabinet_light
+- platform: group
+  name: Henrys Room Lamps
+  entities:
+    - light.henrys_room_lamp_1
+- platform: group
+  name: Henrys Room Ceiling Light
+  entities:
+    - light.henrys_room_ceiling_1
+    - light.henrys_room_ceiling_2
+- platform: group
+  name: Henrys Room Lights
+  entities:
+    - light.henrys_room_ceiling_light
+    - light.henrys_room_lamps
+- platform: group
+  name: Office Ceiling Lights
+  entities:
+    - light.office_ceiling_1
+    - light.office_ceiling_2
+- platform: group
+  name: Bedroom LED Strips
+  entities:
+    - light.bedroom_ledstrip_left
+    - light.bedroom_ledstrip_right
+- platform: switch
+  name: Ensuite Cabinet Light
+  entity_id: switch.shelly_ensuite_cabinet_light
+- platform: switch
+  name: Bathroom Cabinet Light
+  entity_id: switch.shelly_bathroom_cabinet_light

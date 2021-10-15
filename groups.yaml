@@ -1,0 +1,69 @@
+Family:
+  - person.damien
+  - person.olia
+
+binary:
+    name: Binary
+    entities:
+      - binary_sensor.damien_home
+      - binary_sensor.olia_home
+
+device_tracker:
+    entities:
+      - device_tracker.damien_ios
+      - device_tracker.life360_damien_seidel
+      - device_tracker.olia_ios
+      - device_tracker.life360_olia_krivtchoun
+
+people_status:
+  name: People Status
+  entities:
+    - sensor.damien_status
+    - sensor.olia_status
+
+livingarea_motionsensor:
+  name: Living Area Motion Sensor
+  entities:
+    - binary_sensor.entrance_motionsensor_occupancy
+    - binary_sensor.livingroom_motionsensor_occupancy
+    - binary_sensor.dining_motionsensor_occupancy
+    - binary_sensor.kitchen_motionsensor_occupancy
+
+sensor_lights:
+  name: Sensor Lights
+  entities:
+    - input_boolean.kitchen_lights
+    - input_boolean.dining_lights
+    - input_boolean.livingroom_lights
+    - input_boolean.hallway_lights
+
+livingarea_lux:
+  name: Living Area Lux
+  entities:
+    - binary_sensor.entrance_motionsensor_lux
+    - binary_sensor.livingroom_motionsensor_lux
+    - binary_sensor.dining_motionsensor_lux
+    - binary_sensor.kitchen_motionsensor_lux
+
+thermostat_heat:
+  name: Heater Thermostat
+  entities:
+    - climate.bedroom_heat_thermostat
+    - climate.living_room_heat_thermostat
+    - climate.henrys_room_heat_thermostat
+    - climate.office_heat_thermostat
+
+thermostat_aircon:
+  name: Aircon Thermostat
+  entities:
+    - climate.bedroom_ac_thermostat
+    - climate.living_room_ac_thermostat
+    - climate.henrys_room_ac_thermostat
+    - climate.office_ac_thermostat
+
+echos:
+  name: Echo Group
+  entities:
+    - media_player.kitchen_echo_show
+    - media_player.office_echo_dot
+    - media_player.bedroom_echo_dot

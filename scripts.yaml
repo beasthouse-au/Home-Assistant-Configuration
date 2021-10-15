@@ -1,0 +1,445 @@
+arrive_home_day:
+  alias: Arrive Home Day
+  sequence:
+  - condition: state
+    entity_id: sun.sun
+    state: above_horizon
+  - service: light.turn_on
+    data:
+      transition: 1
+    target:
+      entity_id: light.kitchen_lights
+  mode: single
+  icon: mdi:home
+arrive_home_night_after_2100:
+  alias: Arrive Home Night
+  sequence:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  - service: light.turn_on
+    data:
+      transition: 1
+    target:
+      entity_id:
+      - light.balcony_lights
+      - light.entrance_ceiling
+      - light.kitchen_lights
+  mode: single
+  icon: mdi:home
+family_is_away:
+  alias: Family Is Away
+  sequence:
+  - service: light.turn_off
+    target:
+      entity_id: all
+  - service: switch.turn_off
+    target:
+      entity_id:
+      - switch.shelly_ensuite_fan
+      - switch.shelly_bathroom_fan
+      - switch.shelly_ensuite_cabinet_light
+      - switch.shelly_bathroom_cabinet_light
+  mode: single
+  icon: mdi:home-outline
+all_ac_thermostat_on:
+  alias: All AC Thermostat On
+  sequence:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.all_ac_thermostat_script_on
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: cool
+    target:
+      entity_id:
+      - climate.livingroom_thermostat
+      - climate.bedroom_thermostat
+      - climate.office_thermostat
+      - climate.henrysroom_thermostat
+  mode: single
+  icon: mdi:snowflake
+all_ac_thermostat_off:
+  alias: All AC Thermostat Off
+  sequence:
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: 'off'
+    target:
+      entity_id:
+      - climate.livingroom_thermostat
+      - climate.bedroom_thermostat
+      - climate.office_thermostat
+      - climate.henrysroom_thermostat
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.all_ac_thermostat_script_on
+  mode: single
+  icon: mdi:thermostat
+all_heat_thermostat_on:
+  alias: All Heat Thermostat On
+  sequence:
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.all_heat_thermostat_script_on
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: heat
+    target:
+      entity_id:
+      - climate.livingroom_thermostat
+      - climate.bedroom_thermostat
+      - climate.office_thermostat
+      - climate.henrysroom_thermostat
+  mode: single
+  icon: mdi:fire
+all_heat_thermostat_off:
+  alias: All Heat Thermostat Off
+  sequence:
+  - service: climate.set_hvac_mode
+    data:
+      hvac_mode: 'off'
+    target:
+      entity_id:
+      - climate.livingroom_thermostat
+      - climate.bedroom_thermostat
+      - climate.office_thermostat
+      - climate.henrysroom_thermostat
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.all_heat_thermostat_script_on
+  mode: single
+  icon: mdi:thermostat
+bedroom_lights_red:
+  alias: Bedroom Lamps Red PM
+  sequence:
+  - condition: time
+    after: '20:00'
+  - service: light.turn_on
+    target:
+      entity_id: light.bedroom_lamps
+    data:
+      transition: 2
+      brightness_pct: 60
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  mode: single
+bedroom_lights_red_am:
+  alias: Bedroom Lamps Red AM
+  sequence:
+  - condition: time
+    before: 05:59
+  - service: light.turn_on
+    target:
+      entity_id: light.bedroom_lamps
+    data:
+      transition: 2
+      brightness_pct: 60
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  mode: single
+bedroom_lights_warm:
+  alias: Bedroom Lights Warm
+  sequence:
+  - condition: time
+    after: '17:00'
+    before: '19:00'
+  - service: light.turn_on
+    target:
+      entity_id: light.bedroom
+    data:
+      transition: 2
+      kelvin: 2237
+      brightness_pct: 100
+  mode: single
+bedroom_lamps_warm:
+  alias: Bedroom Lamps Warm
+  sequence:
+  - condition: time
+    after: '19:00'
+    before: '20:00'
+  - service: light.turn_on
+    target:
+      entity_id:
+      - light.bedroom_lamps
+    data:
+      transition: 2
+      kelvin: 2237
+      brightness_pct: 100
+  mode: single
+bedroom_lights_day:
+  alias: Bedroom Lights Bright
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 2
+      kelvin: 4291
+      brightness_pct: 100
+    target:
+      entity_id: light.bedroom
+  mode: single
+'1619684223635':
+  alias: Bedroom Lights
+  sequence:
+  - condition: time
+    before: '19:59'
+    after: 06:00
+  - service: light.turn_on
+    data:
+      transition: 2
+    target:
+      entity_id: light.bedroom
+  mode: single
+spotify_fresh_country:
+  alias: Spotify Fresh Country
+  sequence:
+  - service: spotcast.start
+    data:
+      uri: spotify:playlist:37i9dQZF1DWXepGEFFmQXJ
+      random_song: true
+      shuffle: true
+      start_volume: 30
+      entity_id: media_player.sony_amp_google_cast
+  mode: single
+spotify_nashville_worldwide_hot_50:
+  alias: Spotify Nashville Worldwide Hot 50
+  sequence:
+  - service: spotcast.start
+    data:
+      uri: spotify:playlist:37i9dQZF1DX7aUUBCKwo4Y
+      random_song: true
+      shuffle: true
+      start_volume: 30
+      device_name: Sony Amp
+  mode: single
+spotify_eurovision_2021:
+  alias: Spotify Eurovision 2021
+  sequence:
+  - service: spotcast.start
+    data:
+      uri: spotify:playlist:37i9dQZF1DWVCKO3xAlT1Q
+      random_song: true
+      shuffle: true
+      start_volume: 20
+      device_name: Sony Amp
+  mode: single
+spotify_pub_classics:
+  alias: Spotify Pub Classics
+  sequence:
+  - service: spotcast.start
+    data:
+      uri: spotify:playlist:37i9dQZF1DWX9PZqNqjR6L
+      random_song: true
+      shuffle: true
+      start_volume: 30
+      device_name: Sony Amp
+  mode: single
+sony_amp_media_play_pause:
+  sequence:
+  - service: media_player.turn_on
+    target:
+      entity_id: media_player.sony_amp_google_cast
+  - condition: template
+    value_template: '"{{ states(''media_player.spotify_damien_seidel'') in [''paused'',
+      ''playing''] }}"'
+  - service: media_player.media_play_pause
+    target:
+      entity_id: media_player.spotify_damien_seidel
+  mode: single
+  alias: Sony Amp Media Play Pause
+kitchen_lights_off:
+  alias: Kitchen Lights Off
+  sequence:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.kitchen_lights
+  - service: light.turn_off
+    target:
+      entity_id: light.kitchen_lights
+    data:
+      transition: 1
+  mode: single
+dining_lights_off:
+  alias: Dining Lights Off
+  sequence:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.dining_lights
+  - service: light.turn_off
+    target:
+      entity_id: light.dining_table_light
+    data:
+      transition: 1
+  mode: single
+livingroom_lights_off:
+  alias: Livingroom Lights Off
+  sequence:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.livingroom_lights
+  - service: light.turn_off
+    data:
+      transition: 1
+    target:
+      entity_id: light.living_room_lights
+  mode: single
+hallway_lights_off:
+  alias: Hallway Lights Off
+  sequence:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.hallway_lights
+  - service: light.turn_off
+    data:
+      transition: 1
+    target:
+      entity_id: light.hallway_lights
+  mode: single
+kitchen_lights_on:
+  alias: Kitchen Lights On
+  sequence:
+  - service: light.turn_on
+    target:
+      entity_id: light.kitchen_lights
+    data:
+      transition: 1
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.kitchen_lights
+  mode: single
+dining_lights_on:
+  alias: Dining Lights On
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 1
+    target:
+      entity_id: light.dining_table_light
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.dining_lights
+  mode: single
+livingroom_lights_on:
+  alias: Livingroom Lights On
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 1
+    target:
+      entity_id: light.living_room_lights
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.livingroom_lights
+  mode: single
+hallway_lights_on:
+  alias: Hallway Lights On
+  sequence:
+  - service: light.turn_on
+    data:
+      transition: 1
+    target:
+      entity_id: light.hallway_lights
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.hallway_lights
+  mode: single
+testing_1:
+  alias: Testing 1
+  sequence:
+  - service: spotcast.start
+    data:
+      device_name: Sony Amp
+      uri: spotify:playlist:37i9dQZF1DWXepGEFFmQXJ
+      random_song: true
+      shuffle: true
+      start_volume: 25
+  mode: single
+spotify_smooth_jazz:
+  alias: Spotify Smooth Jazz
+  sequence:
+  - service: spotcast.start
+    data:
+      uri: spotify:playlist:37i9dQZF1DXdwTUxmGKrdN
+      random_song: true
+      shuffle: true
+      start_volume: 30
+      device_name: Sony Amp
+  mode: single
+bathroom_lights_off:
+  alias: Bathroom Lights Off
+  sequence:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.bathroom_lights
+  - service: light.turn_off
+    data:
+      transition: 1
+    target:
+      entity_id: light.bathroom_lights
+  - service: switch.turn_off
+    target:
+      entity_id: switch.shelly_bathroom_cabinet_light
+  mode: single
+bathroom_lights_on:
+  alias: Bathroom Lights On
+  sequence:
+  - service: light.turn_on
+    target:
+      entity_id: light.bathroom_lights
+    data:
+      transition: 1
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.bathroom_lights
+  - service: switch.turn_on
+    target:
+      entity_id: switch.shelly_bathroom_cabinet_light
+  mode: single
+ensuite_lights_off:
+  alias: Ensuite Lights Off
+  sequence:
+  - service: input_boolean.turn_off
+    target:
+      entity_id: input_boolean.ensuite_lights
+  - service: light.turn_off
+    data:
+      transition: 1
+    target:
+      entity_id: light.ensuite_lights
+  - service: switch.turn_off
+    target:
+      entity_id: switch.shelly_ensuite_cabinet_light
+  mode: single
+ensuite_lights_on:
+  alias: Ensuite Lights On
+  sequence:
+  - service: light.turn_on
+    target:
+      entity_id: light.ensuite_lights
+    data:
+      transition: 1
+  - service: input_boolean.turn_on
+    target:
+      entity_id: input_boolean.ensuite_lights
+  - service: switch.turn_on
+    target:
+      entity_id: switch.shelly_ensuite_cabinet_light
+  mode: single
+spotify_lounge_chillout_music:
+  alias: Spotify Lounge Chillout Music
+  sequence:
+  - service: media_player.turn_on
+    target:
+      entity_id: media_player.sony_amp_google_cast
+  - service: spotcast.start
+    data:
+      uri: spotify:playlist:6NH3haTkVIgFaqh7vVc6Dn
+      random_song: true
+      shuffle: true
+      start_volume: 30
+      entity_id: media_player.sony_amp_google_cast
+  mode: single

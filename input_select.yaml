@@ -1,0 +1,26 @@
+damien_status_dropdown:
+  name: Damien
+  options:
+    - Home
+    - Just Arrived
+    - Just Left
+    - Away
+    - Extended Away
+    - Driving
+    - Work
+    - Just Arrived Work
+    - Just Left Work
+  initial: Home
+olia_status_dropdown:
+  name: Olia
+  options:
+    - Home
+    - Just Arrived
+    - Just Left
+    - Away
+    - Extended Away
+    - Driving
+    - Work
+    - Just Arrived Work
+    - Just Left Work
+  initial: Home

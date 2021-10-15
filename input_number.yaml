@@ -1,0 +1,25 @@
+energy_cost:
+  name: Energy Cost
+  icon: mdi:currency-usd
+  unit_of_measurement: "$/day"
+  initial: 0.296879
+  min: 0
+  max: 1
+  mode: box
+
+daily_cost:
+  name: Energy Cost
+  icon: mdi:currency-usd
+  unit_of_measurement: "$/kWh"
+  initial: 0.847000
+  min: 0
+  max: 1
+  mode: box
+
+culmative_energy_cost:
+  name: Culmative Energy Cost
+  mode: box
+  min: 0
+  max: 5000
+  unit_of_measurement: "$"
+  icon: mdi:currency-usd
