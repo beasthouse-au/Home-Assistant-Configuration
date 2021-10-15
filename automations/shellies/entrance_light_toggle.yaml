@@ -1,0 +1,17 @@
+id: '20210628201500'
+alias: Shelly - Entrance Light Toggle
+description: ''
+trigger:
+- platform: state
+  entity_id: binary_sensor.shelly_entrance_light_switch
+  to:
+  - 'on'
+  - 'off'
+condition: []
+action:
+- service: light.toggle
+  target:
+    entity_id: light.entrance_ceiling
+  data:
+    transition: 1
+mode: single

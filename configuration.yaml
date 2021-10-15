@@ -1,0 +1,51 @@
+default_config:
+
+homeassistant:
+  name: Home
+  latitude: -33.904162
+  longitude: 151.208060
+  elevation: 24
+  unit_system: metric
+  time_zone: "Australia/Sydney"
+  internal_url: "http://homeassistant:8123"
+  packages: !include_dir_named packages
+  customize: !include customize.yaml
+  currency: "AUD"
+  auth_providers: !include auth_providers.yaml
+
+logger:
+  default: info
+  logs:
+    custom_components.spotcast: debug
+
+mobile_app:
+discovery:
+frontend: !include frontend.yaml
+tts: !include tts.yaml
+cloud: !include cloud.yaml
+group: !include groups.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+device_tracker: !include device_tracker.yaml
+input_select: !include input_select.yaml
+input_number: !include input_number.yaml
+sensor: !include sensor.yaml
+binary_sensor: !include binary_sensor.yaml
+zone: !include zones.yaml
+proximity: !include proximity.yaml
+light: !include light.yaml
+switch: !include switch.yaml
+climate: !include climate.yaml
+spotify: !include spotify.yaml
+automation: !include_dir_list automations/
+homekit: !include homekit.yaml
+miele: !include miele.yaml
+influxdb: !include influxdb.yaml
+# cover: !include cover.yaml
+spotcast: !include spotcast.yaml
+utility_meter: !include utility_meter.yaml
+camera: !include camera.yaml
+recorder: !include recorder.yaml
+rest_command: !include rest_command.yaml
+geo_location: !include geo_location.yaml
+python_script:

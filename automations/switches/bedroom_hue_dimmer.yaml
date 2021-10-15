@@ -1,0 +1,154 @@
+id: '1623830881162'
+alias: Bedroom Huedimmer
+description: ''
+use_blueprint:
+  path: harbri/z2m-philips-hue-dimmer-switch-individual-buttons.yaml
+  input:
+    dimmer: sensor.bedroom_huedimmer_action
+    button_1:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 05:59
+        sequence:
+        - service: light.turn_on
+          data:
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            transition: 1
+            brightness_pct: 50
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+      default:
+      - service: light.turn_on
+        data:
+          transition: 1
+        target:
+          entity_id: light.bedroom_lights
+    button_2:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 05:59
+        sequence:
+        - service: light.turn_on
+          data:
+            transition: 1
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            brightness_step_pct: 20
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+      default:
+      - service: light.turn_on
+        data:
+          transition: 1
+          brightness_step_pct: 20
+        target:
+          entity_id: light.bedroom_lights
+    button_3:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 05:59
+        sequence:
+        - service: light.turn_on
+          data:
+            transition: 1
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            brightness_step_pct: -20
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+      default:
+      - service: light.turn_on
+        data:
+          transition: 1
+          brightness_step_pct: -20
+        target:
+          entity_id: light.bedroom_lights
+    button_4:
+    - service: light.turn_off
+      data:
+        transition: 1
+      target:
+        entity_id: light.bedroom_lights
+    button_5:
+    - service: light.turn_on
+      data:
+        transition: 1
+      target:
+        entity_id: light.bedroom_lights
+    button_8:
+    - service: light.turn_off
+      data:
+        transition: 1
+      target:
+        entity_id: light.bedroom_lights
+    button_6:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 05:59
+        sequence:
+        - service: light.turn_on
+          data:
+            transition: 1
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            brightness_pct: 100
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+      default:
+      - service: light.turn_on
+        data:
+          transition: 1
+          brightness_pct: 100
+        target:
+          entity_id: light.bedroom_lights
+    button_7:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 05:59
+        sequence:
+        - service: light.turn_on
+          data:
+            transition: 1
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            brightness_pct: 10
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+      default:
+      - service: light.turn_on
+        data:
+          transition: 1
+          brightness_pct: 10
+        target:
+          entity_id: light.bedroom_lights

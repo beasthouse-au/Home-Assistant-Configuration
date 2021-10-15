@@ -1,0 +1,12 @@
+id: '1621580603216'
+alias: Office Adaptive Lighting Sleep Mode Off
+description: ''
+trigger:
+- platform: time
+  at: 06:00:00
+condition: []
+action:
+- service: switch.turn_off
+  target:
+    entity_id: switch.adaptive_lighting_sleep_mode_office_lights
+mode: single

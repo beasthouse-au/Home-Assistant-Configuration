@@ -1,0 +1,30 @@
+id: '1630397565368'
+alias: Henrys Room Lamps To Red
+description: Henrys Room Lamps Transition to Red at 8pm
+trigger:
+- platform: time
+  at: '20:00:00'
+condition:
+- condition: state
+  entity_id: light.henrys_room_lamp_1
+  state: 'on'
+action:
+- service: light.turn_on
+  target:
+    entity_id:
+    - light.henrys_room_lamp_1
+  data:
+    transition: 900
+    rgb_color:
+    - 255
+    - 0
+    - 0
+    brightness_pct: 50
+- service: light.turn_off
+  target:
+    entity_id:
+    - light.henrys_room_ceiling_1
+    - light.henrys_room_ceiling_2
+  data:
+    transition: 300
+mode: single

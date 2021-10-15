@@ -1,0 +1,27 @@
+id: '1620820966563'
+alias: Kitchen Sensor Light Reset
+description: ''
+trigger:
+- platform: state
+  entity_id: input_boolean.kitchen_lights
+  to: 'off'
+  for: 03:00:00
+- platform: state
+  entity_id: group.livingarea_motionsensor
+  to: 'off'
+  for: 02:00:00
+condition:
+- condition: state
+  entity_id: switch.sensor_lights
+  state: 'on'
+- condition: state
+  entity_id:
+  - input_boolean.kitchen_lights
+  - light.kitchen_lights
+  state: 'off'
+  for: 02:00:00
+action:
+- service: input_boolean.turn_on
+  target:
+    entity_id: input_boolean.kitchen_lights
+mode: single

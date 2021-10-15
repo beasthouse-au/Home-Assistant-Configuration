@@ -1,0 +1,18 @@
+id: '1622379923311'
+alias: Morning Heater
+description: ''
+trigger:
+- platform: time
+  at: 06:00:00
+condition:
+- condition: state
+  entity_id: climate.bedroom_thermostat
+  state: heat
+action:
+- service: climate.set_hvac_mode
+  target:
+    entity_id:
+    - climate.livingroom_thermostat
+  data:
+    hvac_mode: heat
+mode: single

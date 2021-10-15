@@ -1,0 +1,19 @@
+id: '1624065065251'
+alias: Washing Machine Finished Notification (Home)
+description: ''
+trigger:
+- platform: state
+  entity_id: input_boolean.washing_machine
+  to: 'off'
+  from: 'on'
+condition:
+- condition: state
+  entity_id: group.family
+  state: home
+action:
+- service: notify.alexa_media_kitchen_echo_show
+  data:
+    message: Hey, the washing machine has finished. Time to hang up the clothes!
+    data:
+      type: announce
+mode: single

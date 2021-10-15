@@ -1,0 +1,33 @@
+id: '1623835174885'
+alias: Henrys Room Huedimmer
+description: ''
+use_blueprint:
+  path: harbri/z2m-philips-hue-dimmer-switch-individual-buttons.yaml
+  input:
+    dimmer: sensor.henrys_room_huedimmer_action
+    button_1:
+    - service: light.turn_on
+      target:
+        entity_id: light.henrys_room_lights
+      data:
+        transition: 1
+    button_4:
+    - service: light.turn_off
+      target:
+        entity_id: light.henrys_room_lights
+      data:
+        transition: 1
+    button_2:
+    - service: light.turn_on
+      target:
+        entity_id: light.henrys_room_lights
+      data:
+        transition: 1
+        brightness_step_pct: 20
+    button_3:
+    - service: light.turn_on
+      target:
+        entity_id: light.henrys_room_lights
+      data:
+        transition: 1
+        brightness_step_pct: -20

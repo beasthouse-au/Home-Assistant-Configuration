@@ -1,0 +1,15 @@
+id: '20210703185720'
+alias: Shelly - Bathroom Fan Toggle
+description: ''
+trigger:
+- platform: state
+  entity_id: binary_sensor.shelly_bathroom_fan_switch
+  to:
+  - 'on'
+  - 'off'
+condition: []
+action:
+- service: switch.toggle
+  target:
+    entity_id: switch.shelly_bathroom_fan
+mode: single

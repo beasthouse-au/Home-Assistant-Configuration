@@ -1,0 +1,19 @@
+id: '20210814191901'
+alias: Dryer Finished Notification (Home)
+description: ''
+trigger:
+- platform: state
+  entity_id: input_boolean.dryer
+  to: 'off'
+  from: 'on'
+condition:
+- condition: state
+  entity_id: group.family
+  state: home
+action:
+- service: notify.alexa_media_kitchen_echo_show
+  data:
+    message: Hey, the dryer has finished. 
+    data:
+      type: announce
+mode: single

@@ -1,0 +1,21 @@
+id: '1625668236656'
+alias: Bathroom Fan Shutoff
+description: ''
+trigger:
+- platform: time_pattern
+  minutes: /5
+condition:
+- condition: and
+  conditions:
+  - condition: state
+    entity_id: binary_sensor.shelly_bathroom_fan_switch
+    state: 'on'
+    for: 00:20:00
+  - condition: numeric_state
+    entity_id: sensor.bathroom_weather_humidity
+    below: '85'
+action:
+- service: switch.turn_off
+  target:
+    entity_id: switch.shelly_bathroom_fan
+mode: single

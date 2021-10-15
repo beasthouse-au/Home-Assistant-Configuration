@@ -1,0 +1,15 @@
+id: '20210703185840'
+alias: Shelly - Ensuite Fan Toggle
+description: ''
+trigger:
+- platform: state
+  entity_id: binary_sensor.shelly_ensuite_fan_switch
+  to:
+  - 'on'
+  - 'off'
+condition: []
+action:
+- service: switch.toggle
+  target:
+    entity_id: switch.shelly_ensuite_fan
+mode: single

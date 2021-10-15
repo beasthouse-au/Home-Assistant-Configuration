@@ -1,0 +1,17 @@
+id: '1630501395004'
+alias: Henry’s Lamp Auto Off
+description: 'Henry’s Bedroom Lamp will turn off at a set time each night '
+trigger:
+- platform: time
+  at: 04:00
+condition:
+- condition: state
+  entity_id: light.henrys_room_lamp_1
+  state: 'on'
+action:
+- service: light.turn_off
+  target:
+    entity_id: light.henrys_room_lamp_1
+  data:
+    transition: 1
+mode: single

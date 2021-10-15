@@ -1,0 +1,16 @@
+id: '1611404145484'
+alias: TV Bias Light on with Sony Bravia TV
+description: ''
+trigger:
+- platform: state
+  entity_id: media_player.sony_bravia_tv
+  from: 'off'
+condition:
+- condition: state
+  entity_id: sun.sun
+  state: below_horizon
+action:
+- service: switch.turn_on
+  target:
+    entity_id: switch.livingroom_tv_light
+mode: single

@@ -1,0 +1,14 @@
+id: '1624072576822'
+alias: Washing Machine Has Finished
+description: ''
+trigger:
+- platform: state
+  entity_id: miele.washing_machine
+  to: Finished
+  from: In use
+condition: []
+action:
+- service: input_boolean.turn_off
+  target:
+    entity_id: input_boolean.washing_machine
+mode: single

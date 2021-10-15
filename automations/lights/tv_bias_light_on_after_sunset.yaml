@@ -1,0 +1,16 @@
+id: '1614587306065'
+alias: TV Bias Light on if Sony Bravia TV is on after Sunset
+description: ''
+trigger:
+- platform: state
+  entity_id: sun.sun
+  to: below_horizon
+condition:
+- condition: state
+  entity_id: media_player.sony_bravia_tv
+  state: 'on'
+action:
+- service: switch.turn_on
+  target:
+    entity_id: switch.livingroom_tv_light
+mode: single

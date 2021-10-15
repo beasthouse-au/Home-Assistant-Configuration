@@ -1,0 +1,23 @@
+id: '1615978379000'
+alias: Olia Has Left Work
+description: ''
+trigger:
+- platform: zone
+  entity_id: person.olia
+  zone: zone.work_olia
+  event: leave
+condition:
+- condition: time
+  after: '16:00'
+  weekday:
+  - mon
+  - tue
+  - wed
+  - thu
+  - fri
+action:
+- service: notify.mobile_app_damiens_iphone
+  data:
+    title: Olia Has Left Work
+    message: Free time is over
+mode: single

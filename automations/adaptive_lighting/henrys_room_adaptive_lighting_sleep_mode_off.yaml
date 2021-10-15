@@ -1,0 +1,12 @@
+id: '1630397233024'
+alias: Henrys Room Lamps Adaptive Lighting Off
+description: ''
+trigger:
+- platform: time
+  at: '20:00:00'
+condition: []
+action:
+- service: switch.turn_off
+  target:
+    entity_id: switch.adaptive_lighting_henrys_room_lamps
+mode: single

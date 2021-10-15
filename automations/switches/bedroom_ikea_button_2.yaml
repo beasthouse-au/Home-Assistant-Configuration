@@ -1,0 +1,64 @@
+id: '1625667595986'
+alias: Bedroom Button 2
+description: ''
+use_blueprint:
+  path: EPMatt/ikea_e1812.yaml
+  input:
+    integration: Zigbee2MQTT
+    controller_entity: sensor.bedroom_button_2_action
+    action_button_short:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 07:00
+        sequence:
+        - service: light.toggle
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+          data:
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            transition: 1
+            brightness_pct: 20
+      default:
+      - service: light.toggle
+        data:
+          transition: 1
+        target:
+          entity_id:
+          - light.bedroom_lamps
+          - light.bedroom_led_strips
+    action_button_long:
+    - choose:
+      - conditions:
+        - condition: time
+          after: '20:00'
+          before: 07:00
+        sequence:
+        - service: light.turn_on
+          target:
+            entity_id:
+            - light.bedroom_lamps
+            - light.bedroom_led_strips
+          data:
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            transition: 1
+            brightness_pct: 70
+      default:
+      - service: light.turn_on
+        data:
+          transition: 1
+        target:
+          entity_id:
+          - light.bedroom_lights
+          - light.bedroom_led_strips
+    helper_last_controller_event: input_text.ikea_remote
+    button_double_press: false

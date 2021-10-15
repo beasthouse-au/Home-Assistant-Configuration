@@ -1,0 +1,21 @@
+alias: Mark person as just arrived work
+trigger:
+- platform: state
+  entity_id: person.damien
+  from: not_home
+  to: Work - Damien
+- platform: state
+  entity_id: person.olia
+  from: not_home
+  to: Work - Olia
+action:
+- service: input_select.select_option
+  data_template:
+    entity_id: "{% if trigger.entity_id == 'person.damien' %}\n  input_select.damien_status_dropdown\n\
+      {% else %}\n  input_select.olia_status_dropdown\n{% endif %}\n"
+    option: "{% if trigger.entity_id == 'person.damien' %}\n  {% if states.input_select.damien_status_dropdown.state\
+      \ == 'Just Left Work' %}\n    Work\n  {% else %}\n    Just Arrived Work\n\
+      \  {% endif %}\n{% else %}\n  {% if states.input_select.olia_status_dropdown.state\
+      \ == 'Just Left Work' %}\n    Work\n  {% else %}\n    Just Arrived Work\n\
+      \  {% endif %}\n{% endif %}\n"
+id: 7898789aefdd4cd5bbbf1b1379343225

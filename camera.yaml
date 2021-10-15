@@ -1,0 +1,16 @@
+- platform: xiaomi_cloud_map_extractor
+  host: !secret xiaomi_vacuum_host
+  token: !secret xiaomi_vacuum_token
+  username: !secret xiaomi_cloud_username
+  password: !secret xiaomi_cloud_password
+  draw: ["all"]
+  attributes:
+    - calibration_points
+  map_transformation:
+    scale: 2
+    rotate: 180
+    trim:
+      top: 25
+      bottom: 25
+      left: 20
+      right: 21

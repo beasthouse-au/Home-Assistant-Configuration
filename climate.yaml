@@ -1,0 +1,211 @@
+- platform: intesishome
+  username: !secret climate_username
+  password: !secret climate_password
+
+- platform: generic_thermostat
+  name: bedroom_thermostat_ac
+  heater: switch.bedroom_hvac_cool
+  target_sensor: sensor.bedroom_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: true
+  target_temp: 23
+  away_temp: 25
+  cold_tolerance: 1.0
+  hot_tolerance: 0.0
+  initial_hvac_mode: "off"
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: livingroom_thermostat_ac
+  heater: switch.livingroom_hvac_cool
+  target_sensor: sensor.livingroom_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: true
+  target_temp: 22
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 25
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: henrys_room_thermostat_ac
+  heater: switch.henrys_room_hvac_cool
+  target_sensor: sensor.henrys_room_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: true
+  target_temp: 23
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 25
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: office_thermostat_ac
+  heater: switch.office_hvac_cool
+  target_sensor: sensor.office_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: true
+  target_temp: 23
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 25
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: bedroom_thermostat_heat
+  heater: switch.bedroom_hvac_heat
+  target_sensor: sensor.bedroom_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: false
+  target_temp: 20
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 18
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: livingroom_thermostat_heat
+  heater: switch.livingroom_hvac_heat
+  target_sensor: sensor.livingroom_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: false
+  target_temp: 20
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 18
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: henrys_room_thermostat_heat
+  heater: switch.henrys_room_hvac_heat
+  target_sensor: sensor.henrys_room_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    minutes: 15
+  ac_mode: false
+  target_temp: 20
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 18
+  precision: 1.0
+
+- platform: generic_thermostat
+  name: office_thermostat_heat
+  heater: switch.office_hvac_heat
+  target_sensor: sensor.office_weather_temperature
+  min_temp: 18
+  max_temp: 30
+  min_cycle_duration:
+    seconds: 15
+  ac_mode: false
+  target_temp: 20
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  initial_hvac_mode: "off"
+  away_temp: 18
+  precision: 1.0
+
+- platform: dualmode_generic
+  name: Office Thermostat
+  heater: switch.office_hvac_heat
+  cooler: switch.office_hvac_cool
+#  fan: switch.bedroom_hvac_fan_only
+#  fan_behavior: cooler
+#  dryer: switch.bedroom_hvac_dryer
+#  dryer_behavior: heater
+  target_sensor: sensor.office_weather_temperature
+  reverse_cycle: cooler, heater
+  enable_heat_cool: false
+  target_temp: 20
+  min_temp: 18
+  max_temp: 30
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  precision: 1.0
+  min_cycle_duration:
+    minutes: 20
+
+- platform: dualmode_generic
+  name: Livingroom Thermostat
+  heater: switch.livingroom_hvac_heat
+  cooler: switch.livingroom_hvac_cool
+#  fan: switch.bedroom_hvac_fan_only
+#  fan_behavior: cooler
+#  dryer: switch.bedroom_hvac_dryer
+#  dryer_behavior: heater
+  target_sensor: sensor.livingroom_weather_temperature
+  reverse_cycle: cooler, heater
+  enable_heat_cool: false
+  target_temp: 20
+  min_temp: 18
+  max_temp: 30
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  precision: 1.0
+  min_cycle_duration:
+    minutes: 20
+
+- platform: dualmode_generic
+  name: Henrys Room Thermostat
+  heater: switch.henrys_room_hvac_heat
+  cooler: switch.henrys_room_hvac_cool
+#  fan: switch.bedroom_hvac_fan_only
+#  fan_behavior: cooler
+#  dryer: switch.bedroom_hvac_dryer
+#  dryer_behavior: heater
+  target_sensor: sensor.henrys_room_weather_temperature
+  reverse_cycle: cooler, heater
+  enable_heat_cool: false
+  target_temp: 20
+  min_temp: 18
+  max_temp: 30
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  precision: 1.0
+  min_cycle_duration:
+    minutes: 20
+
+- platform: dualmode_generic
+  name: Bedroom Thermostat
+  heater: switch.bedroom_hvac_heat
+  cooler: switch.bedroom_hvac_cool
+#  fan: switch.bedroom_hvac_fan_only
+#  fan_behavior: cooler
+#  dryer: switch.bedroom_hvac_dryer
+#  dryer_behavior: heater
+  target_sensor: sensor.bedroom_weather_temperature
+  reverse_cycle: cooler, heater
+  enable_heat_cool: false
+  target_temp: 20
+  min_temp: 18
+  max_temp: 30
+  cold_tolerance: 1.0
+  hot_tolerance: 1.0
+  precision: 1.0
+  min_cycle_duration:
+    minutes: 20

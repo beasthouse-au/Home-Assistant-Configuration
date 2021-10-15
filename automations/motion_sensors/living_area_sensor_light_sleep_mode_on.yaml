@@ -1,0 +1,14 @@
+id: '1624976490291'
+alias: Sensor Light Sleep Mode On - Living Areas
+description: ''
+trigger:
+- platform: time
+  at: 00:00:01
+condition: []
+action:
+- service: automation.turn_off
+  target:
+    entity_id:
+    - automation.dining_sensor_lights
+    - automation.livingroom_sensor_lights_2
+mode: single

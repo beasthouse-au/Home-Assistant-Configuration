@@ -1,0 +1,20 @@
+id: '1629974402942'
+alias: Office Ceiling Off Night
+description: If Office Ceiling Light is on at night, turn off when switch is toggled
+trigger:
+- platform: state
+  entity_id: binary_sensor.shelly_office_light_switch
+  to:
+  - 'on'
+  - 'off'
+condition:
+- condition: time
+  after: '20:30'
+  before: 06:00
+action:
+- service: light.turn_off
+  data:
+    transition: 1
+  target:
+    entity_id: light.office_ceiling_lights
+mode: single

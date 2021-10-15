@@ -1,0 +1,15 @@
+alias: Mark person as driving
+trigger:
+- platform: state
+  entity_id: person.damien
+  to: automotive
+- platform: state
+  entity_id: person.olia
+  to: automotive
+action:
+- service: input_select.select_option
+  data_template:
+    entity_id: "{% if trigger.entity_id == 'person.damien' %}\n  input_select.damien_status_dropdown\n\
+      {% else %}\n  input_select.olia_status_dropdown\n{% endif %}\n"
+    option: Driving
+id: 7bd148278475402aa207a3a0a305fb44
