@@ -1,0 +1,1583 @@
+kiosk_mode: null
+views:
+  - title: Home
+    type: custom:horizontal-layout
+    layout:
+      panel: false
+    theme: Google Dark Theme
+    background: var(--background-image)
+    icon: mdi:home
+    badges: []
+    cards:
+      - type: grid
+        cards:
+          - type: custom:clock-card
+            size: 250
+            font_size: 40
+            disable_seconds: false
+            display_date: DD MMMM
+            theme:
+              background: black
+              hands: grey
+              numbers: white
+              border: grey
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+          - type: grid
+            cards:
+              - type: custom:button-card
+                entity: light.bedroom_lamps
+                hold_action:
+                  action: more-info
+                name: Master Bedroom
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:bed-king-outline;
+                      }
+              - type: custom:button-card
+                entity: light.office_desk_lamp
+                hold_action:
+                  action: more-info
+                name: Office
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:desktop-classic;
+                      }
+              - type: custom:button-card
+                entity: light.wled_henrys_light
+                hold_action:
+                  action: more-info
+                name: Henry's Room
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:bed-single-outline;
+                      }
+            columns: 3
+            square: false
+        columns: 1
+        square: false
+      - type: grid
+        columns: 1
+        square: false
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:button-card
+                entity: binary_sensor.updater
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+                icon: mdi:home-assistant
+                name: |
+                  [[[
+                    if (states['binary_sensor.updater'].state === 'off') return "Current";
+                    else return "Updates";
+                  ]]]
+                state:
+                  - value: 'off'
+                    operator: '=='
+                    color: green
+                  - operator: default
+                    color: red
+                tap_action:
+                  action: navigate
+                  navigation_path: /hassio/dashboard
+              - type: custom:button-card
+                entity: sensor.hacs
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+                name: |
+                  [[[
+                    if (states['sensor.hacs'].state === '0') return "Current";
+                    else if (states['sensor.hacs'].state === 'unknown') return "Loading";
+                    else return "Updates";
+                  ]]]
+                state:
+                  - value: 0
+                    operator: '=='
+                    color: green
+                  - operator: default
+                    color: red
+                tap_action:
+                  action: navigate
+                  navigation_path: /hacs/entry
+              - type: custom:button-card
+                entity: sensor.washing_machine_status
+                show_icon: true
+                show_state: true
+                show_units: false
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+                icon: mdi:washing-machine
+                state:
+                  - value: 'Off'
+                    operator: '=='
+                    color: gray
+                  - operator: default
+                    color: green
+              - type: custom:button-card
+                entity: sensor.tumble_dryer_status
+                show_icon: true
+                show_state: true
+                show_units: false
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+                icon: mdi:tumble-dryer
+                state:
+                  - value: 'Off'
+                    operator: '=='
+                    color: gray
+                  - operator: default
+                    color: green
+          - type: grid
+            cards:
+              - type: glance
+                entities:
+                  - entity: person.damien
+                  - entity: person.olia
+                state_color: false
+                show_name: false
+                show_icon: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+            columns: 1
+            square: false
+          - type: custom:bom-weather-card
+            title: BOM Weather
+            entity_current_conditions: sensor.sylvania_icon_descriptor_0
+            entity_temperature: sensor.lucas_heights_temp
+            entity_forecast_high_temp_1: sensor.sylvania_temp_max_1
+            entity_forecast_high_temp_2: sensor.sylvania_temp_max_2
+            entity_forecast_high_temp_3: sensor.sylvania_temp_max_3
+            entity_forecast_high_temp_4: sensor.sylvania_temp_max_4
+            entity_forecast_high_temp_5: sensor.sylvania_temp_max_5
+            entity_forecast_icon_1: sensor.sylvania_icon_descriptor_1
+            entity_forecast_icon_2: sensor.sylvania_icon_descriptor_2
+            entity_forecast_icon_3: sensor.sylvania_icon_descriptor_3
+            entity_forecast_icon_4: sensor.sylvania_icon_descriptor_4
+            entity_forecast_icon_5: sensor.sylvania_icon_descriptor_5
+            entity_forecast_low_temp_1: sensor.sylvania_temp_min_1
+            entity_forecast_low_temp_2: sensor.sylvania_temp_min_2
+            entity_forecast_low_temp_3: sensor.sylvania_temp_min_3
+            entity_forecast_low_temp_4: sensor.sylvania_temp_min_4
+            entity_forecast_low_temp_5: sensor.sylvania_temp_min_5
+            entity_summary_1: sensor.sylvania_short_text_1
+            entity_summary_2: sensor.sylvania_short_text_2
+            entity_summary_3: sensor.sylvania_short_text_3
+            entity_summary_4: sensor.sylvania_short_text_4
+            entity_summary_5: sensor.sylvania_short_text_5
+            entity_apparent_temp: sensor.lucas_heights_temp_feels_like
+            entity_daily_summary: sensor.sylvania_extended_text_0
+            entity_pop: sensor.sylvania_rain_chance_0
+            entity_pop_intensity: sensor.lucas_heights_rain_since_9am
+            entity_possible_today: sensor.sylvania_rain_amount_range_0
+            entity_pos_1: sensor.sylvania_rain_amount_range_1
+            entity_pos_2: sensor.sylvania_rain_amount_range_2
+            entity_pos_3: sensor.sylvania_rain_amount_range_3
+            entity_pos_4: sensor.sylvania_rain_amount_range_4
+            entity_pos_5: sensor.sylvania_rain_amount_range_5
+            entity_pop_1: sensor.sylvania_rain_chance_1
+            entity_pop_2: sensor.sylvania_rain_chance_2
+            entity_pop_3: sensor.sylvania_rain_chance_3
+            entity_pop_4: sensor.sylvania_rain_chance_4
+            entity_pop_5: sensor.sylvania_rain_chance_5
+            entity_uv_alert_summary: sensor.sylvania_uv_category_0
+            entity_humidity: sensor.lucas_heights_humidity
+            entity_wind_bearing: sensor.lucas_heights_wind_direction
+            entity_wind_speed: sensor.lucas_heights_wind_speed_kilometre
+            entity_daytime_high: sensor.bom_today_max
+            entity_daytime_low: sensor.bom_today_min
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+            columns: 1
+          - type: grid
+            cards:
+              - type: custom:button-card
+                icon: mdi:robot-vacuum
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/vacuum
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:music
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/media
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:light-switch
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/shelly
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+            columns: 3
+            square: false
+      - type: grid
+        cards:
+          - type: grid
+            cards:
+              - type: custom:button-card
+                entity: input_boolean.guest_mode
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+                icon: mdi:home
+                name: Guest Mode
+                state:
+                  - value: 'off'
+                    color: grey
+                    icon: mdi:home
+                  - value: 'on'
+                    color: green
+          - type: grid
+            cards:
+              - type: custom:button-card
+                entity: light.bedroom_lamps
+                hold_action:
+                  action: more-info
+                name: Bedroom
+                icon: mdi:lamps
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.wled_henrys_bedhead
+                hold_action:
+                  action: more-info
+                name: Henry's Room
+                icon: mdi:lamp
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.office_desk_lamp
+                hold_action:
+                  action: more-info
+                name: Office
+                icon: mdi:lamp
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.office_desk_lamp
+                hold_action:
+                  action: more-info
+                name: Office Desk
+                icon: mdi:lamp
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+            square: false
+            columns: 4
+        columns: 1
+        square: false
+  - title: Vacuum
+    path: vacuum
+    icon: mdi:robot-vacuum
+    theme: Google Dark Theme
+    layout: {}
+    type: custom:masonry-layout
+    badges: []
+    cards:
+      - type: custom:xiaomi-vacuum-map-card
+        title: Xiaomi Vacuum Map Card
+        preset_name: Live map
+        entity: vacuum.roborock_vacuum_a10
+        map_source:
+          camera: camera.xiaomi_cloud_map_extractor
+        calibration_source:
+          camera: true
+        map_modes:
+          - template: vacuum_clean_zone
+          - template: vacuum_clean_zone_predefined
+            predefined_selections:
+              - zones:
+                  - - 29218
+                    - 25397
+                    - 32728
+                    - 28231
+                label:
+                  text: Kitchen
+                  x: 30990
+                  'y': 26699
+                  offset_y: 35
+                icon:
+                  name: mdi:countertop
+                  x: 30990
+                  'y': 26699
+              - zones:
+                  - - 24417
+                    - 25414
+                    - 29258
+                    - 28044
+                  - - 24450
+                    - 28062
+                    - 26301
+                    - 29375
+                label:
+                  text: Kitchen 2
+                  x: 27230
+                  'y': 26511
+                  offset_y: 35
+                icon:
+                  name: mdi:countertop
+                  x: 27230
+                  'y': 26511
+              - zones:
+                  - - 29048
+                    - 28386
+                    - 33668
+                    - 33202
+                label:
+                  text: Dining
+                  x: 32887
+                  'y': 30100
+                  offset_y: 35
+                icon:
+                  name: mdi:table-chair
+                  x: 32887
+                  'y': 30100
+              - zones:
+                  - - 29203
+                    - 33308
+                    - 31925
+                    - 34928
+                  - - 29271
+                    - 34846
+                    - 30215
+                    - 37816
+                label:
+                  text: Hallway
+                  x: 31280
+                  'y': 33929
+                  offset_y: 35
+                icon:
+                  name: mdi:countertop
+                  x: 31280
+                  'y': 33929
+              - zones:
+                  - - 30244
+                    - 35102
+                    - 32761
+                    - 35919
+                label:
+                  text: Powder Room
+                  x: 32596
+                  'y': 35279
+                  offset_y: 35
+                icon:
+                  name: mdi:countertop
+                  x: 32596
+                  'y': 35279
+              - zones:
+                  - - 24534
+                    - 35445
+                    - 29018
+                    - 37937
+                  - - 26908
+                    - 33104
+                    - 29051
+                    - 35408
+                label:
+                  text: Master Bedroom
+                  x: 28016
+                  'y': 36133
+                  offset_y: 35
+                icon:
+                  name: mdi:countertop
+                  x: 28016
+                  'y': 36133
+              - zones:
+                  - - 24584
+                    - 33634
+                    - 26795
+                    - 35289
+                label:
+                  text: Ensuite
+                  x: 26495
+                  'y': 34014
+                  offset_y: 35
+                icon:
+                  name: mdi:table-chair
+                  x: 26495
+                  'y': 34014
+          - template: vacuum_goto
+          - template: vacuum_follow_path
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+  - title: Media
+    path: media
+    icon: mdi:music
+    type: custom:horizontal-layout
+    layout:
+      panel: true
+    theme: Google Dark Theme
+    badges: []
+    cards:
+      - type: grid
+        cards:
+          - type: grid
+            cards:
+              - type: picture-entity
+                entity: script.spotify_fresh_country
+                image: >-
+                  https://i.scdn.co/image/ab67706f000000036b4c4cacdf446dbcd26da7a5
+                show_name: false
+                show_state: false
+                theme: Google Dark Theme
+                state_filter:
+                  'on': brightness(100%)
+                  'off': brightness(100%)
+                tap_action:
+                  action: toggle
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: picture-entity
+                entity: script.spotify_nashville_worldwide_hot_50
+                image: >-
+                  https://i.scdn.co/image/ab67706f0000000335e45382b59be1c6a0a8916f
+                show_name: false
+                show_state: false
+                theme: Google Dark Theme
+                state_filter:
+                  'on': brightness(100%)
+                  'off': brightness(100%)
+                tap_action:
+                  action: toggle
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: picture-entity
+                entity: script.spotify_eurovision_2021
+                image: >-
+                  https://i.scdn.co/image/ab67706f00000003fac40ee3fc3d34b5583800ea
+                show_name: false
+                show_state: false
+                theme: Google Dark Theme
+                state_filter:
+                  'on': brightness(100%)
+                  'off': brightness(100%)
+                tap_action:
+                  action: toggle
+            square: false
+          - type: custom:mini-media-player
+            name: Spotify
+            entity: media_player.spotify_damien_seidel
+            source: full
+            sound_mode: full
+            info: scroll
+            volume_step: '5'
+            max_volume: '1'
+            min_volume: '100'
+            theme: Google Dark Theme
+            artwork: material
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+          - type: grid
+            cards:
+              - type: picture-entity
+                entity: script.spotify_smooth_jazz
+                image: >-
+                  https://i.scdn.co/image/ab67706f000000034442b63c730c0b491387b062
+                show_name: false
+                show_state: false
+                theme: Google Dark Theme
+                state_filter:
+                  'on': brightness(100%)
+                  'off': brightness(100%)
+                tap_action:
+                  action: toggle
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: picture-entity
+                entity: script.spotify_pub_classics
+                image: >-
+                  https://i.scdn.co/image/ab67706f00000003b873662fe1e9521069a6f719
+                show_name: false
+                show_state: false
+                theme: Google Dark Theme
+                state_filter:
+                  'on': brightness(100%)
+                  'off': brightness(100%)
+                tap_action:
+                  action: toggle
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: picture-entity
+                entity: script.spotify_lounge_chillout_music
+                image: >-
+                  https://i.scdn.co/image/ab67706c0000bebb0c9c46ce66230bd50d185b5c
+                show_name: false
+                show_state: false
+                theme: Google Dark Theme
+                state_filter:
+                  'on': brightness(100%)
+                  'off': brightness(100%)
+                tap_action:
+                  action: toggle
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+          - type: grid
+            cards:
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_down
+                  service_data:
+                    entity_id: media_player.sony_amp_songpal
+                icon: mdi:volume-minus
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.media_previous_track
+                  service_data:
+                    entity_id: media_player.spotify_damien_seidel
+                icon: mdi:rewind
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data:
+                    entity_id: media_player.spotify_damien_seidel
+                icon: mdi:play
+                entity: media_player.spotify_damien_seidel
+                aspect_ratio: 1/1
+                show_name: false
+                state:
+                  - value: playing
+                    icon: mdi:pause
+                  - value: paused
+                    icon: mdi:play
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.media_next_track
+                  service_data:
+                    entity_id: media_player.spotify_damien_seidel
+                icon: mdi:fast-forward
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_up
+                  service_data:
+                    entity_id: media_player.sony_amp_songpal
+                icon: mdi:volume-plus
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+            columns: 5
+            square: false
+          - type: grid
+            cards:
+              - type: custom:button-card
+                tap_action:
+                  action: toggle
+                entity: switch.livingroom_tv
+                show_name: false
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: toggle
+                entity: switch.livingroom_amp
+                show_name: false
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+            columns: 2
+            square: false
+          - type: grid
+            cards:
+              - type: custom:button-card
+                icon: mdi:home
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/home
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:robot-vacuum
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/vacuum
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:light-switch
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/shelly
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+            columns: 3
+            square: false
+        columns: 1
+        square: false
+  - title: Shelly
+    path: shelly
+    icon: mdi:light-switch
+    theme: Google Dark Theme
+    badges: []
+    cards:
+      - aspect_ratio: 3
+        color: auto
+        color_type: card
+        entity: light.office_desk_lamp
+        name: Desk Lamp
+        haptic: success
+        icon: mdi:lamp
+        hold_action:
+          action: more-info
+        show_last_changed: true
+        show_state: true
+        state:
+          - styles:
+              card:
+                - filter: opacity(50%)
+                - background: var(--primary-background-color)
+                - '--mdc-ripple-color': yellow
+                - '--mdc-ripple-press-opacity': 0.5
+                - font-size: 14px
+              icon:
+                - filter: grayscale(100%)
+              label:
+                - font-size: 11px
+            value: 'off'
+          - styles:
+              card:
+                - '--mdc-ripple-color': yellow
+                - '--mdc-ripple-press-opacity': 0.5
+                - font-size: 16px
+              icon:
+                - filter: grayscale(100%)
+              label:
+                - font-size: 11px
+            value: 'on'
+        type: custom:button-card
+      - aspect_ratio: 3
+        color: auto
+        color_type: card
+        entity: light.henrys_room_lamps
+        name: Henry's Room Lamp
+        haptic: success
+        hold_action:
+          action: more-info
+        show_last_changed: true
+        show_state: true
+        state:
+          - styles:
+              card:
+                - filter: opacity(50%)
+                - background: var(--primary-background-color)
+                - '--mdc-ripple-color': yellow
+                - '--mdc-ripple-press-opacity': 0.5
+                - font-size: 14px
+              icon:
+                - filter: grayscale(100%)
+              label:
+                - font-size: 11px
+            value: 'off'
+          - styles:
+              card:
+                - '--mdc-ripple-color': yellow
+                - '--mdc-ripple-press-opacity': 0.5
+                - font-size: 16px
+              icon:
+                - filter: grayscale(100%)
+              label:
+                - font-size: 11px
+            value: 'on'
+        type: custom:button-card
+      - type: entities
+        entities:
+          - entity: switch.livingroom_tv
+            name: TV
+          - entity: switch.livingroom_amp
+            name: Amp
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entity
+        entity: binary_sensor.kitchen_tablet_motion
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - sensor.wled_estimated_current
+          - switch.wled_nightlight
+          - select.wled_playlist
+          - select.wled_preset
+          - switch.wled_sync_receive
+          - switch.wled_sync_send
+      - type: light
+        entity: light.wled_henrys_light
+        name: Henry's Bedhead
+      - type: light
+        entity: light.wled_monitor
+        name: Monitor
+      - type: light
+        entity: light.henrys_room_hue_play_bars
+        name: Henry's Hue Play Bars
+      - type: button
+        tap_action:
+          action: toggle
+        entity: light.christmas_tree_master
+        name: Christmas Tree
+        show_state: false
+  - title: Testing
+    path: testing
+    theme: Google Dark Theme
+    background: var(--background-image)
+    icon: mdi:gauge
+    type: custom:masonry-layout
+    badges:
+      - entity: person.damien
+      - entity: sensor.damiens_iphone_steps
+        name: null
+      - entity: person.olia
+      - entity: sensor.olias_iphone_steps
+        name: null
+    cards:
+      - type: entities
+        entities:
+          - entity: group.family
+            type: custom:multiple-entity-row
+            name: Family Status
+            show_state: false
+            icon: mdi:account-group
+            entities:
+              - entity: group.family
+                name: Family
+              - entity: input_boolean.family_is_home
+                name: Input Boolean
+              - entity: group.binary
+                name: Binary Sensor
+          - entity: sensor.damien_status
+            type: custom:multiple-entity-row
+            name: Damien Status
+            show_state: false
+            entities:
+              - entity: device_tracker.damien_phone
+                name: Phone
+              - entity: device_tracker.damiens_iphone
+                name: iCloud
+              - entity: device_tracker.damien_ios
+                name: HA iOS
+              - entity: device_tracker.life360_damien_seidel
+                name: Life 360
+              - entity: binary_sensor.damien_home
+                name: Binary Sensor
+          - entity: sensor.olia_status
+            type: custom:multiple-entity-row
+            name: Olia Status
+            show_state: false
+            entities:
+              - entity: device_tracker.olias_iphone_2
+                name: Phone
+              - entity: device_tracker.olias_iphone
+                name: iCloud
+              - entity: device_tracker.olia_ios
+                name: HA iOS
+              - entity: device_tracker.life360_olia_krivtchoun
+                name: Life 360
+              - entity: binary_sensor.olia_home
+                name: Binary Sensor
+          - entity: device_tracker.computer_nas
+            type: custom:multiple-entity-row
+            name: NAS Temperatures
+            show_state: false
+            icon: bha:nas
+            entities:
+              - entity: >-
+                  sensor.win_uah2rsvbtch_asrock_b460m_steel_legend_nuvoton_nct6796d_r_temperatures_cpu_core
+                name: CPU
+              - entity: >-
+                  sensor.win_uah2rsvbtch_wdc_wd101emaz_11g7da0_temperatures_temperature
+                name: HDD 1
+              - entity: >-
+                  sensor.win_uah2rsvbtch_wdc_wd101emaz_11g7da0_temperatures_temperature_2
+                name: HDD 2
+              - entity: >-
+                  sensor.win_uah2rsvbtch_wdc_wd101emaz_11g7da0_temperatures_temperature_3
+                name: HDD 3
+          - entity: sensor.speedtest_download
+            type: custom:multiple-entity-row
+            name: Internet Speeds
+            show_state: false
+            icon: mdi:gauge
+            entities:
+              - entity: sensor.speedtest_download
+                name: Download
+              - entity: sensor.speedtest_upload
+                name: Upload
+              - entity: sensor.speedtest_ping
+                name: Ping
+          - entity: sensor.sonarr_disk_space
+            type: custom:multiple-entity-row
+            name: Sonarr
+            show_state: false
+            icon: mdi:television-box
+            entities:
+              - entity: sensor.sonarr_shows
+                name: Shows
+              - entity: sensor.sonarr_upcoming
+                name: Upcoming
+          - entity: sensor.radarr_disk_space
+            type: custom:multiple-entity-row
+            name: Radarr
+            show_state: false
+            icon: mdi:movie-open
+            entities:
+              - entity: sensor.radarr_movies
+                name: Movies
+              - entity: sensor.radarr_upcoming
+                name: Upcoming
+          - entity: sensor.qbittorrent_status
+            type: custom:multiple-entity-row
+            name: qBittorrent
+            show_state: false
+            icon: mdi:download-network
+            entities:
+              - entity: sensor.qbittorrent_down_speed
+                name: Download Speed
+              - entity: sensor.qbittorrent_up_speed
+                name: Upload Speed
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: sensor.home_temperature_average_rounded
+            icon: mdi:thermometer
+            name: Home Average
+          - entity: sensor.entrance_weather_temperature
+            name: Entrance
+            icon: mdi:thermometer
+          - entity: sensor.livingroom_weather_temperature
+            name: Living Room
+            icon: mdi:thermometer
+          - entity: sensor.dining_weather_temperature
+            name: Dining
+            icon: mdi:thermometer
+          - entity: sensor.hallway_motionsensor_temperature
+            name: Hallway
+            icon: mdi:thermometer
+          - entity: sensor.bathroom_weather_temperature
+            name: Bathroom
+            icon: mdi:thermometer
+          - entity: sensor.bedroom_weather_temperature
+            name: Bedroom
+            icon: mdi:thermometer
+          - entity: sensor.ensuite_weather_temperature
+            name: Ensuite
+            icon: mdi:thermometer
+          - entity: sensor.office_weather_temperature
+            name: Office
+            icon: mdi:thermometer
+          - entity: sensor.henrys_room_weather_temperature
+            name: Spare Room
+            icon: mdi:thermometer
+        title: Temperature
+        columns: 1
+        square: false
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: sensor.home_humidity_average_rounded
+            icon: mdi:water-percent
+            name: Home Average
+          - entity: sensor.entrance_weather_humidity
+            name: Entrance
+          - entity: sensor.livingroom_weather_humidity
+            name: Living Room
+          - entity: sensor.dining_weather_humidity
+            name: Dining
+          - entity: sensor.bathroom_weather_humidity
+            name: Bathroom
+          - entity: sensor.bedroom_weather_humidity
+            name: Bedroom
+          - entity: sensor.ensuite_weather_humidity
+            name: Ensuite
+          - entity: sensor.office_weather_humidity
+            name: Office
+          - entity: sensor.henrys_room_weather_humidity
+            name: Spare Room
+        title: Humidity
+        columns: 1
+        square: false
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: sensor.home_pressure_average_rounded
+            icon: mdi:gauge
+            name: Home Average
+          - entity: sensor.entrance_weather_pressure
+            name: Entrance
+          - entity: sensor.livingroom_weather_pressure
+            name: Living Room
+          - entity: sensor.dining_weather_pressure
+            name: Dining
+          - entity: sensor.bathroom_weather_pressure
+            name: Bathroom
+          - entity: sensor.bedroom_weather_pressure
+            name: Bedroom
+          - entity: sensor.ensuite_weather_pressure
+            name: Ensuite
+          - entity: sensor.office_weather_pressure
+            name: Office
+          - entity: sensor.henrys_room_weather_pressure
+            name: Spare Room
+        title: Pressure
+        columns: 1
+        square: false
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: binary_sensor.entrance_door_contact
+          - entity: binary_sensor.livingroom_door_contact
+          - entity: binary_sensor.office_door_contact
+          - entity: binary_sensor.henrys_room_door_contact
+        title: Door Sensors
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: media-control
+        entity: media_player.spotify_damien_seidel
+        theme: ios-dark-mode
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: light.bathroom_lights
+          - entity: light.ensuite_lights
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: input_boolean.kitchen_lights
+          - entity: input_boolean.dining_lights
+          - entity: input_boolean.livingroom_lights
+          - entity: input_boolean.hallway_lights
+        title: Sensor Input Booleans
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: sensor.entrance_motionsensor_illuminance_lux
+          - entity: sensor.livingroom_motionsensor_illuminance_lux
+          - entity: sensor.dining_motionsensor_illuminance_lux
+          - entity: sensor.kitchen_motionsensor_illuminance_lux
+          - entity: sensor.hallway_motionsensor_illuminance_lux
+          - entity: sensor.balcony_motionsensor_illuminance_lux
+        title: Lux
+        state_color: false
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entity
+        entity: cover.bedroom_blind
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+  - title: Network
+    path: network
+    icon: mdi:graphql
+    type: custom:horizontal-layout
+    theme: Google Dark Theme
+    badges: []
+    cards:
+      - type: entities
+        entities:
+          - entity: sensor.fridge_cost_today
+            name: Fridge Cost Today
+            icon: mdi:currency-usd
+          - entity: sensor.dishwasher_cost_today
+            name: Dishwasher Cost Today
+            icon: mdi:currency-usd
+          - entity: sensor.server_cost_today
+            name: Server Cost Today
+            icon: mdi:currency-usd
+          - entity: sensor.gamingrig_cost_today
+            name: Gaming Rig Cost Today
+            icon: mdi:currency-usd
+          - entity: sensor.tv_cost_today
+            name: TV Cost Today
+            icon: mdi:currency-usd
+          - entity: sensor.total_cost_today
+            name: Total Cost Today
+            icon: mdi:currency-usd
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: sensor.fridge_cost_yesterday
+            name: Fridge Cost Yesterday
+            icon: mdi:currency-usd
+          - entity: sensor.dishwasher_cost_yesterday
+            name: Dishwasher Cost Yesterday
+            icon: mdi:currency-usd
+          - entity: sensor.server_cost_yesterday
+            name: Server Cost Yesterday
+            icon: mdi:currency-usd
+          - entity: sensor.gamingrig_cost_yesterday
+            name: Gaming Rig Cost Yesterday
+            icon: mdi:currency-usd
+          - entity: sensor.tv_cost_yesterday
+            name: TV  Cost Yesterday
+            icon: mdi:currency-usd
+          - entity: sensor.total_cost_yesterday
+            name: Total Cost Yesterday
+            icon: mdi:currency-usd
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: grid
+        cards:
+          - type: custom:mini-graph-card
+            name: Power Today
+            icon: mdi:flash
+            line_width: 4
+            animate: true
+            hours_to_show: 24
+            points_per_hour: 1
+            entities:
+              - entity: sensor.kitchen_fridge_smartplug_energy_today
+                name: Fridge
+              - entity: sensor.kitchen_dishwasher_smartplug_energy_today
+                name: Dishwasher
+              - entity: sensor.server_smartplug_energy_today
+                name: Server
+              - entity: sensor.gamingrig_smartplug_energy_today
+                name: Gaming Rig
+              - entity: sensor.tv_smartplug_energy_today
+                name: TV
+            show:
+              state: false
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+          - type: custom:mini-graph-card
+            name: Power
+            icon: mdi:flash
+            line_width: 4
+            animate: true
+            hours_to_show: 24
+            points_per_hour: 1
+            entities:
+              - entity: sensor.kitchen_fridge_smartplug_energy_total
+                name: Fridge
+              - entity: sensor.kitchen_dishwasher_smartplug_energy_total
+                name: Dishwasher
+              - entity: sensor.server_smartplug_energy_total
+                name: Server
+              - entity: sensor.gamingrig_smartplug_energy_total
+                name: Gaming Rig
+              - entity: sensor.tv_smartplug_energy_total
+                name: TV
+            show:
+              state: false
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+        columns: 1
+        square: false
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: custom:mini-graph-card
+        name: Air Quality Inside
+        icon: mdi:server
+        line_width: 4
+        animate: true
+        hours_to_show: 72
+        points_per_hour: 1
+        entities:
+          - entity: sensor.air_quality_pm_1_um
+            name: 1 µm >
+          - entity: sensor.air_quality_pm_2_5_um
+            name: 2.5 µm >
+          - entity: sensor.air_quality_pm_10_um
+            name: 10 µm >
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.energy_consumption
+        name: ENERGY CONSUMPTION
+        hours_to_show: 168
+        aggregate_func: max
+        group_by: date
+        show:
+          graph: bar
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: entities
+        entities:
+          - entity: sensor.air_quality_pm_1_um
+          - entity: sensor.air_quality_pm_2_5_um
+          - entity: sensor.air_quality_pm_10_um
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: none;
+              box-shadow: none;
+              }
+      - type: grid
+        cards:
+          - type: custom:mini-graph-card
+            name: Soil Moisture - Indoor Plant
+            icon: mdi:sprout
+            line_width: 4
+            animate: true
+            hours_to_show: 24
+            points_per_hour: 0.5
+            entities:
+              - entity: sensor.moisture_indoor_pot_plant
+                name: Moisture
+              - entity: sensor.temperature_indoor_pot_plant
+                name: Temp
+              - entity: sensor.humidity_indoor_pot_plant
+                name: Humidity
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+          - type: custom:mini-graph-card
+            name: Soil Moisture - Outdoor Plant
+            icon: mdi:sprout
+            line_width: 4
+            animate: true
+            hours_to_show: 24
+            points_per_hour: 0.5
+            entities:
+              - entity: sensor.moisture_outdoor_pot_plant
+                name: Moisture
+              - entity: sensor.temperature_outdoor_pot_plant
+                name: Temp
+              - entity: sensor.humidity_outdoor_pot_plant
+                name: Humidity
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+        columns: 1
+        square: false
+      - type: grid
+        cards:
+          - type: statistics-graph
+            entities:
+              - sensor.home_realfeel_temperature
+            days_to_show: 7
+            stat_types:
+              - mean
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+          - type: statistics-graph
+            entities:
+              - sensor.esp32_temperature
+              - sensor.esp32_humidity
+            days_to_show: 7
+            stat_types:
+              - mean
+            chart_type: line
+            title: ESP32 Temperature Sensor
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+        columns: 1
+        square: false
+      - type: entities
+        entities:
+          - entity: sensor.esp32_temperature
+          - entity: sensor.esp32_humidity
+        title: My ESP Temperature Sensor
+  - title: Map
+    path: map
+    theme: Google Dark Theme
+    type: panel
+    icon: mdi:map
+    badges: []
+    cards:
+      - type: map
+        entities:
+          - entity: device_tracker.life360_damien_seidel
+          - entity: device_tracker.life360_olia_krivtchoun
+          - entity: zone.home
+        dark_mode: false
+        default_zoom: 16
