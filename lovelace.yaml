@@ -447,137 +447,184 @@ views:
     type: custom:masonry-layout
     badges: []
     cards:
-      - type: custom:xiaomi-vacuum-map-card
-        title: Xiaomi Vacuum Map Card
-        preset_name: Live map
-        entity: vacuum.roborock_vacuum_a10
-        map_source:
-          camera: camera.xiaomi_cloud_map_extractor
-        calibration_source:
-          camera: true
-        map_modes:
-          - template: vacuum_clean_zone
-          - template: vacuum_clean_zone_predefined
-            predefined_selections:
-              - zones:
-                  - - 29218
-                    - 25397
-                    - 32728
-                    - 28231
-                label:
-                  text: Kitchen
-                  x: 30990
-                  'y': 26699
-                  offset_y: 35
-                icon:
-                  name: mdi:countertop
-                  x: 30990
-                  'y': 26699
-              - zones:
-                  - - 24417
-                    - 25414
-                    - 29258
-                    - 28044
-                  - - 24450
-                    - 28062
-                    - 26301
-                    - 29375
-                label:
-                  text: Kitchen 2
-                  x: 27230
-                  'y': 26511
-                  offset_y: 35
-                icon:
-                  name: mdi:countertop
-                  x: 27230
-                  'y': 26511
-              - zones:
-                  - - 29048
-                    - 28386
-                    - 33668
-                    - 33202
-                label:
-                  text: Dining
-                  x: 32887
-                  'y': 30100
-                  offset_y: 35
-                icon:
-                  name: mdi:table-chair
-                  x: 32887
-                  'y': 30100
-              - zones:
-                  - - 29203
-                    - 33308
-                    - 31925
-                    - 34928
-                  - - 29271
-                    - 34846
-                    - 30215
-                    - 37816
-                label:
-                  text: Hallway
-                  x: 31280
-                  'y': 33929
-                  offset_y: 35
-                icon:
-                  name: mdi:countertop
-                  x: 31280
-                  'y': 33929
-              - zones:
-                  - - 30244
-                    - 35102
-                    - 32761
-                    - 35919
-                label:
-                  text: Powder Room
-                  x: 32596
-                  'y': 35279
-                  offset_y: 35
-                icon:
-                  name: mdi:countertop
-                  x: 32596
-                  'y': 35279
-              - zones:
-                  - - 24534
-                    - 35445
-                    - 29018
-                    - 37937
-                  - - 26908
-                    - 33104
-                    - 29051
-                    - 35408
-                label:
-                  text: Master Bedroom
-                  x: 28016
-                  'y': 36133
-                  offset_y: 35
-                icon:
-                  name: mdi:countertop
-                  x: 28016
-                  'y': 36133
-              - zones:
-                  - - 24584
-                    - 33634
-                    - 26795
-                    - 35289
-                label:
-                  text: Ensuite
-                  x: 26495
-                  'y': 34014
-                  offset_y: 35
-                icon:
-                  name: mdi:table-chair
-                  x: 26495
-                  'y': 34014
-          - template: vacuum_goto
-          - template: vacuum_follow_path
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
+      - type: grid
+        cards:
+          - type: custom:xiaomi-vacuum-map-card
+            title: Xiaomi Vacuum Map Card
+            preset_name: Live map
+            entity: vacuum.roborock_vacuum_a10
+            map_source:
+              camera: camera.xiaomi_cloud_map_extractor
+            calibration_source:
+              camera: true
+            map_modes:
+              - template: vacuum_clean_zone
+              - template: vacuum_clean_zone_predefined
+                predefined_selections:
+                  - zones:
+                      - - 29218
+                        - 25397
+                        - 32728
+                        - 28231
+                    label:
+                      text: Kitchen
+                      x: 30990
+                      'y': 26699
+                      offset_y: 35
+                    icon:
+                      name: mdi:countertop
+                      x: 30990
+                      'y': 26699
+                  - zones:
+                      - - 24417
+                        - 25414
+                        - 29258
+                        - 28044
+                      - - 24450
+                        - 28062
+                        - 26301
+                        - 29375
+                    label:
+                      text: Kitchen 2
+                      x: 27230
+                      'y': 26511
+                      offset_y: 35
+                    icon:
+                      name: mdi:countertop
+                      x: 27230
+                      'y': 26511
+                  - zones:
+                      - - 29048
+                        - 28386
+                        - 33668
+                        - 33202
+                    label:
+                      text: Dining
+                      x: 32887
+                      'y': 30100
+                      offset_y: 35
+                    icon:
+                      name: mdi:table-chair
+                      x: 32887
+                      'y': 30100
+                  - zones:
+                      - - 29203
+                        - 33308
+                        - 31925
+                        - 34928
+                      - - 29271
+                        - 34846
+                        - 30215
+                        - 37816
+                    label:
+                      text: Hallway
+                      x: 31280
+                      'y': 33929
+                      offset_y: 35
+                    icon:
+                      name: mdi:countertop
+                      x: 31280
+                      'y': 33929
+                  - zones:
+                      - - 30244
+                        - 35102
+                        - 32761
+                        - 35919
+                    label:
+                      text: Powder Room
+                      x: 32596
+                      'y': 35279
+                      offset_y: 35
+                    icon:
+                      name: mdi:countertop
+                      x: 32596
+                      'y': 35279
+                  - zones:
+                      - - 24534
+                        - 35445
+                        - 29018
+                        - 37937
+                      - - 26908
+                        - 33104
+                        - 29051
+                        - 35408
+                    label:
+                      text: Master Bedroom
+                      x: 28016
+                      'y': 36133
+                      offset_y: 35
+                    icon:
+                      name: mdi:countertop
+                      x: 28016
+                      'y': 36133
+                  - zones:
+                      - - 24584
+                        - 33634
+                        - 26795
+                        - 35289
+                    label:
+                      text: Ensuite
+                      x: 26495
+                      'y': 34014
+                      offset_y: 35
+                    icon:
+                      name: mdi:table-chair
+                      x: 26495
+                      'y': 34014
+              - template: vacuum_goto
+              - template: vacuum_follow_path
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: none;
+                  box-shadow: none;
+                  }
+          - type: grid
+            cards:
+              - type: custom:button-card
+                icon: mdi:home
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/home
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:music
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/media
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:light-switch
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/shelly
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: none;
+                      box-shadow: none;
+                      }
+            columns: 3
+            square: false
+        columns: 1
+        square: false
   - title: Media
     path: media
     icon: mdi:music
