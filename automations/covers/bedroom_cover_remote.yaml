@@ -1,9 +1,0 @@
-id: '1623828977676'
-alias: Bedroom Rollerblind Remote
-description: ''
-use_blueprint:
-  path: r3mcos3/ikea_open_close_remote.yaml
-  input:
-    remote: sensor.bedroom_rollerblind_remote_action
-    cover:
-      entity_id: cover.bedroom_blind
