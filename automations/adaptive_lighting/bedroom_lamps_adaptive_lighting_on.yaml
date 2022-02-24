@@ -1,0 +1,12 @@
+id: '1630419046740'
+alias: Bedroom Lamps Adaptive Lighting On
+description: ''
+trigger:
+- platform: time
+  at: 06:00:00
+condition: []
+action:
+- service: switch.turn_on
+  target:
+    entity_id: switch.adaptive_lighting_master_bedroom_lamps
+mode: single
