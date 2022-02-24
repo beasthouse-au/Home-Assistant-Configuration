@@ -30,108 +30,114 @@
       to_state: "home"
 
 - platform: mqtt
-  unique_id: shelly_bathroom_light_switch
-  name: "Shelly Bathroom Light Switch"
+  unique_id: shelly_workshop_light_switch
+  name: "Shelly Workshop Light Switch"
   payload_on: "1"
   payload_off: "0"
   device_class: "power"
-  state_topic: "shellies/shelly1l-bathroom/input/1"
+  state_topic: "shellies/shellyswitch25-workshop/input/0"
 
 - platform: mqtt
-  unique_id: shelly_kitchen_light_switch
-  name: "Shelly Kitchen Light Switch"
+  unique_id: shelly_underhousestorage_light_switch
+  name: "Shelly Underhouse Storage Light Switch"
   payload_on: "1"
   payload_off: "0"
   device_class: "power"
-  state_topic: "shellies/shelly1l-kitchen/input/1"
+  state_topic: "shellies/shellyswitch25-workshop/input/1"
 
 - platform: mqtt
-  unique_id: shelly_dining_light_switch
-  name: "Shelly Dining Light Switch"
+  name: Shelly Workshop Overheat
+  state_topic: "shellies/shellyswitch25-workshop/overtemperature"
   payload_on: "1"
   payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-dining/input/1"
 
-- platform: mqtt
-  unique_id: shelly_henrysroom_light_switch
-  name: "Shelly Henrys Room Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-henrysroom/input/1"
+  # - platform: mqtt
+#   unique_id: shelly_dining_light_switch
+#   name: "Shelly Dining Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-dining/input/1"
 
-- platform: mqtt
-  unique_id: shelly_office_light_switch
-  name: "Shelly Office Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-office/input/0"
+# - platform: mqtt
+#   unique_id: shelly_henrysroom_light_switch
+#   name: "Shelly Henrys Room Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-henrysroom/input/1"
 
-- platform: mqtt
-  unique_id: shelly_entrance_light_switch
-  name: "Shelly Entrance Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-entrance/input/0"
+# - platform: mqtt
+#   unique_id: shelly_office_light_switch
+#   name: "Shelly Office Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-office/input/0"
 
-- platform: mqtt
-  unique_id: shelly_livingroom_light_switch
-  name: "Shelly Livingroom Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-livingroom/input/0"
+# - platform: mqtt
+#   unique_id: shelly_entrance_light_switch
+#   name: "Shelly Entrance Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-entrance/input/0"
 
-- platform: mqtt
-  unique_id: shelly_bathroomcabinet_light_switch
-  name: "Shelly Bathroom Cabinet Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-bathroomcabinet/input/0"
+# - platform: mqtt
+#   unique_id: shelly_livingroom_light_switch
+#   name: "Shelly Livingroom Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-livingroom/input/0"
 
-- platform: mqtt
-  unique_id: shelly_ensuitecabinet_light_switch
-  name: "Shelly Ensuite Cabinet Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-ensuitecabinet/input/0"
+# - platform: mqtt
+#   unique_id: shelly_bathroomcabinet_light_switch
+#   name: "Shelly Bathroom Cabinet Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-bathroomcabinet/input/0"
 
-- platform: mqtt
-  unique_id: shelly_ensuite_light_switch
-  name: "Shelly Ensuite Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-ensuite/input/0"
+# - platform: mqtt
+#   unique_id: shelly_ensuitecabinet_light_switch
+#   name: "Shelly Ensuite Cabinet Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-ensuitecabinet/input/0"
 
-- platform: mqtt
-  unique_id: shelly_bedroom_light_switch
-  name: "Shelly Bedroom Light Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-bedroom/input/0"
+# - platform: mqtt
+#   unique_id: shelly_ensuite_light_switch
+#   name: "Shelly Ensuite Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-ensuite/input/0"
 
-- platform: mqtt
-  unique_id: shelly_ensuite_fan_switch
-  name: "Shelly Ensuite Fan Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-ensuitefan/input/1"
+# - platform: mqtt
+#   unique_id: shelly_bedroom_light_switch
+#   name: "Shelly Bedroom Light Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-bedroom/input/0"
 
-- platform: mqtt
-  unique_id: shelly_bathroom_fan_switch
-  name: "Shelly Bathroom Fan Switch"
-  payload_on: "1"
-  payload_off: "0"
-  device_class: "power"
-  state_topic: "shellies/shelly1l-bathroomfan/input/0"
+# - platform: mqtt
+#   unique_id: shelly_ensuite_fan_switch
+#   name: "Shelly Ensuite Fan Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-ensuitefan/input/1"
+
+# - platform: mqtt
+#   unique_id: shelly_bathroom_fan_switch
+#   name: "Shelly Bathroom Fan Switch"
+#   payload_on: "1"
+#   payload_off: "0"
+#   device_class: "power"
+#   state_topic: "shellies/shelly1l-bathroomfan/input/0"
 
 - platform: mqtt
   name: "Kitchen Tablet Motion"
@@ -142,3 +148,4 @@
   payload_off: 'off'
   value_template: "{% if value_json.event == 'onMotion' %}on{% else %}off{% endif %}"
   qos: 1
+
