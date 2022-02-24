@@ -21,45 +21,45 @@ people_status:
     - sensor.damien_status
     - sensor.olia_status
 
-livingarea_motionsensor:
-  name: Living Area Motion Sensor
-  entities:
-    - binary_sensor.entrance_motionsensor_occupancy
-    - binary_sensor.livingroom_motionsensor_occupancy
-    - binary_sensor.dining_motionsensor_occupancy
-    - binary_sensor.kitchen_motionsensor_occupancy
+# livingarea_motionsensor:
+#   name: Living Area Motion Sensor
+#   entities:
+#     - binary_sensor.entrance_motionsensor_occupancy
+#     - binary_sensor.livingroom_motionsensor_occupancy
+#     - binary_sensor.dining_motionsensor_occupancy
+#     - binary_sensor.kitchen_motionsensor_occupancy
 
-sensor_lights:
-  name: Sensor Lights
-  entities:
-    - input_boolean.kitchen_lights
-    - input_boolean.dining_lights
-    - input_boolean.livingroom_lights
-    - input_boolean.hallway_lights
+# sensor_lights:
+#   name: Sensor Lights
+#   entities:
+#     - input_boolean.kitchen_lights
+#     - input_boolean.dining_lights
+#     - input_boolean.livingroom_lights
+#     - input_boolean.hallway_lights
 
-livingarea_lux:
-  name: Living Area Lux
-  entities:
-    - binary_sensor.entrance_motionsensor_lux
-    - binary_sensor.livingroom_motionsensor_lux
-    - binary_sensor.dining_motionsensor_lux
-    - binary_sensor.kitchen_motionsensor_lux
+# livingarea_lux:
+#   name: Living Area Lux
+#   entities:
+#     - binary_sensor.entrance_motionsensor_lux
+#     - binary_sensor.livingroom_motionsensor_lux
+#     - binary_sensor.dining_motionsensor_lux
+#     - binary_sensor.kitchen_motionsensor_lux
 
-thermostat_heat:
-  name: Heater Thermostat
-  entities:
-    - climate.bedroom_heat_thermostat
-    - climate.living_room_heat_thermostat
-    - climate.henrys_room_heat_thermostat
-    - climate.office_heat_thermostat
+# thermostat_heat:
+#   name: Heater Thermostat
+#   entities:
+#     - climate.bedroom_heat_thermostat
+#     - climate.living_room_heat_thermostat
+#     - climate.henrys_room_heat_thermostat
+#     - climate.office_heat_thermostat
 
-thermostat_aircon:
-  name: Aircon Thermostat
-  entities:
-    - climate.bedroom_ac_thermostat
-    - climate.living_room_ac_thermostat
-    - climate.henrys_room_ac_thermostat
-    - climate.office_ac_thermostat
+# thermostat_aircon:
+#   name: Aircon Thermostat
+#   entities:
+#     - climate.bedroom_ac_thermostat
+#     - climate.living_room_ac_thermostat
+#     - climate.henrys_room_ac_thermostat
+#     - climate.office_ac_thermostat
 
 echos:
   name: Echo Group
