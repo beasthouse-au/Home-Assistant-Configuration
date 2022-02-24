@@ -2,9 +2,9 @@ default_config:
 
 homeassistant:
   name: Home
-  latitude: -33.904162
-  longitude: 151.208060
-  elevation: 24
+  latitude: -xx.xxxxxx
+  longitude: xxx.xxxxxx
+  elevation: xx
   unit_system: metric
   time_zone: "Australia/Sydney"
   internal_url: "http://homeassistant:8123"
@@ -14,9 +14,11 @@ homeassistant:
   auth_providers: !include auth_providers.yaml
 
 logger:
-  default: info
+  default: warning
   logs:
     custom_components.spotcast: debug
+    homeassistant.components.python_script: debug
+    homeassistant.components.automation: info
 
 mobile_app:
 discovery:
@@ -36,8 +38,10 @@ proximity: !include proximity.yaml
 light: !include light.yaml
 switch: !include switch.yaml
 climate: !include climate.yaml
+media_player: !include media_player.yaml
 spotify: !include spotify.yaml
-automation: !include_dir_list automations/
+automation: !include automations.yaml
+automation old: !include_dir_list automations/
 homekit: !include homekit.yaml
 miele: !include miele.yaml
 influxdb: !include influxdb.yaml
@@ -49,3 +53,5 @@ recorder: !include recorder.yaml
 rest_command: !include rest_command.yaml
 geo_location: !include geo_location.yaml
 python_script:
+mqtt: !include mqtt.yaml
+template: !include template.yaml
