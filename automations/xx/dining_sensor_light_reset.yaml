@@ -1,0 +1,27 @@
+# id: '1620821465622'
+# alias: Dining Sensor Light Reset
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: input_boolean.dining_lights
+#   to: 'off'
+#   for: 04:00:00
+# - platform: state
+#   entity_id: group.livingarea_motionsensor
+#   to: 'off'
+#   for: 04:00:00
+# condition:
+# - condition: state
+#   entity_id: switch.sensor_lights
+#   state: 'on'
+# - condition: state
+#   entity_id:
+#   - input_boolean.dining_lights
+#   - light.dining_table_light
+#   state: 'off'
+#   for: 02:00:00
+# action:
+# - service: input_boolean.turn_on
+#   target:
+#     entity_id: input_boolean.dining_lights
+# mode: single

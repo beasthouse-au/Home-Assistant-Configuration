@@ -1,0 +1,18 @@
+id: '20220119203601'
+alias: "Office Shelly Button"
+description: ''
+mode: single
+trigger:
+  platform: event
+  event_type: shelly.click
+  event_data:
+    device: shellyix3-98CDAC24406C
+    channel: 1
+    click_type: single
+condition: []
+action:
+  - service: light.toggle
+    target:
+      entity_id: light.office_desk_lamp
+    data:
+      transition: 1

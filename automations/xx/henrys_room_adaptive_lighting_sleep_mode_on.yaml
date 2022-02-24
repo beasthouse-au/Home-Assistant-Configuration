@@ -1,0 +1,12 @@
+# id: '1630397471998'
+# alias: Henrys Room Lamps Adaptive Lighting On
+# description: ''
+# trigger:
+# - platform: time
+#   at: 06:30:00
+# condition: []
+# action:
+# - service: switch.turn_on
+#   target:
+#     entity_id: switch.adaptive_lighting_henrys_room_lamps
+# mode: single

@@ -1,0 +1,19 @@
+# id: '1620786212288'
+# alias: Kitchen Sensor Lights Off
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: group.livingarea_motionsensor
+#   to: 'off'
+#   for: 00:10:00
+# condition:
+# - condition: state
+#   entity_id: input_boolean.kitchen_lights
+#   state: 'on'
+# action:
+# - service: light.turn_off
+#   target:
+#     entity_id: light.kitchen_lights
+#   data:
+#     transition: 120
+# mode: single

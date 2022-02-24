@@ -1,0 +1,18 @@
+id: '20220119204101'
+alias: "Spare Bedroom Shelly Button"
+description: ''
+mode: single
+trigger:
+  - platform: device
+    domain: mqtt
+    device_id: b0f2217b044db0b21d86c2660a60dca2
+    type: button_short_press
+    subtype: button_2
+    discovery_id: shellyswitch25-spareroom-input-1 button_short_press
+condition: []
+action:
+  - service: light.toggle
+    target:
+      entity_id: light.spare_bedroom_lamps
+    data:
+      transition: 1

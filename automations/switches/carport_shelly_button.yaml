@@ -1,0 +1,16 @@
+id: '20220119203100'
+alias: Carport Light Toggle
+description: ''
+mode: single
+trigger:
+  - platform: device
+    device_id: 169c22b96a7f0d4d49a591188a5bafb6
+    domain: shelly
+    type: single
+    subtype: button
+condition: []
+action:
+  - service: light.toggle
+    data: {}
+    target:
+      entity_id: light.carport_lights

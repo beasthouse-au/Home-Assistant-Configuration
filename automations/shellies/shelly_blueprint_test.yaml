@@ -1,0 +1,30 @@
+# id: '20220124202401'
+# alias: "Henry's Shelly Switch"
+# description: ''
+# use_blueprint:
+#   path: nok/shelly-device-switch-template-for-each-click-type.yaml
+#   input:
+#     remote: 997b349681c219e22f5beff09d6f4481
+#     channel: 2
+#     button_single:
+#       - service: light.toggle
+#         target:
+#           entity_id: light.wled_henrys_light
+#         data:
+#           rgb_color:
+#             - 255
+#             - 210
+#             - 129
+#           transition: 1
+#           brightness_pct: 37
+#     button_long:
+#       - service: light.turn_on
+#         data:
+#           transition: 1
+#           rgb_color:
+#             - 255
+#             - 0
+#             - 0
+#           brightness_pct: 21
+#         target:
+#           entity_id: light.wled_henrys_light

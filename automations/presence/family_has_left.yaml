@@ -1,0 +1,25 @@
+id: '1615700759660'
+alias: Family Has Left
+description: ''
+trigger:
+- platform: state
+  from: home
+  to: not_home
+  entity_id: group.device_tracker
+condition:
+- condition: state
+  entity_id: input_boolean.guest_mode
+  state: 'off'
+action:
+- service: input_boolean.turn_off
+  target:
+    entity_id: input_boolean.family_is_home
+- service: script.turn_on
+  target:
+    entity_id:
+    - script.family_is_away
+- service: notify.mobile_app_damiens_iphone
+  data:
+    title: Automation Complete
+    message: Family Is Away
+mode: single

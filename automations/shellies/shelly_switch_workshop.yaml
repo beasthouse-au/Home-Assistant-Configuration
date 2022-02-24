@@ -1,0 +1,17 @@
+id: '20211230123900'
+alias: Shelly - Workshop Light Toggle
+description: ''
+trigger:
+- platform: state
+  entity_id: binary_sensor.shelly_workshop_light_switch
+  to:
+  - 'on'
+  - 'off'
+condition: []
+action:
+- service: light.toggle
+  target:
+    entity_id: light.workshop
+  data:
+    transition: 1
+mode: single

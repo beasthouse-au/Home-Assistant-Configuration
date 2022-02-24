@@ -1,0 +1,23 @@
+id: "1618908289405"
+alias: Bedroom Lamps To Red
+description: Bedroom Lamps Transition to Red at 9pm
+trigger:
+  - platform: time
+    at: "21:00:00"
+condition:
+  - condition: state
+    entity_id: light.master_bedroom_lamps
+    state: "on"
+action:
+  - service: light.turn_on
+    target:
+      entity_id:
+        - light.master_bedroom_lamps
+    data:
+      transition: 300
+      rgb_color:
+        - 255
+        - 0
+        - 0
+      brightness_pct: 20
+mode: single

@@ -1,0 +1,37 @@
+id: '20220124232701'
+alias: Carport Sensor Light
+description: Carport and Footpath LEDs Sensor Light
+trigger:
+- platform: state
+  entity_id: binary_sensor.carport_motion_sensor_occupancy
+  to: 'on'
+condition:
+- condition: state
+  entity_id: sun.sun
+  state: below_horizon
+- condition: and
+  conditions:
+  - condition: state
+    entity_id: light.carport_lights
+    state: 'off'
+  - condition: state
+    entity_id: light.footpath_shelly
+    state: 'off'
+action:
+- service: light.turn_on
+  data:
+    brightness_pct: 100
+  target:
+    entity_id: light.carport_lights
+- service: light.turn_on
+  target:
+    entity_id: light.footpath_shelly
+- wait_for_trigger:
+  - platform: state
+    entity_id: binary_sensor.carport_motion_sensor_occupancy
+    to: 'off'
+    for: 0:02:00
+- service: light.turn_off
+  target:
+    entity_id: light.outdoor_lights
+mode: single

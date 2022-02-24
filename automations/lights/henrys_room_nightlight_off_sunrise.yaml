@@ -1,0 +1,17 @@
+id: '20211020124601'
+alias: "Henry's Room Nightlight Off Sunrise"
+description: "At 0600 Henry's nightlight turns off"
+trigger:
+  - platform: sun
+    event: sunrise
+condition:
+  - condition: state
+    entity_id: light.wled_henrys_light
+    state: 'on'
+action:
+  - service: light.turn_off
+    data:
+      transition: 1
+    target:
+      entity_id: light.wled_henrys_light
+mode: single

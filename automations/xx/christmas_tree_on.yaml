@@ -1,0 +1,29 @@
+# alias: Christmas Tree On
+# description: 'Christmas tree lights will turn on at 6pm'
+# mode: single
+# trigger:
+#   - platform: time
+#     at: '18:00'
+# condition: []
+# action:
+#   - service: select.select_option
+#     target:
+#       entity_id: select.christmas_tree_color_palette
+#     data:
+#       option: Splash
+#   - service: light.turn_on
+#     target:
+#       entity_id: light.christmas_tree
+#     data:
+#       transition: 30
+#       effect: Twinklefox
+#       brightness: 128
+#   - service: light.turn_on
+#     target:
+#       entity_id: light.christmas_tree_star
+#     data:
+#       transition: 30
+#       rgb_color: [255,255,96]
+#       effect: Solid Glitter
+#       brightness: 128
+# id: '202112092257'

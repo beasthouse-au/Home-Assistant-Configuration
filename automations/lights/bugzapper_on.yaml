@@ -1,0 +1,12 @@
+alias: Bug Zapper On
+description: "Bug Zapper will turn on at 6pm"
+mode: single
+trigger:
+  - platform: time
+    at: "18:00"
+condition: []
+action:
+  - service: switch.turn_on
+    target:
+      entity_id: switch.bug_zapper_smartplug
+id: "202112191207"

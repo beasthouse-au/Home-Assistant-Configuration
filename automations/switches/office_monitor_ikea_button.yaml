@@ -1,0 +1,23 @@
+id: "1630406407241"
+alias: Monitor - IKEA E1743 On/Off Switch & Dimmer
+description: ""
+use_blueprint:
+  path: EPMatt/ikea_e1743.yaml
+  input:
+    integration: Zigbee2MQTT
+    controller_entity: sensor.office_monitor_button_action
+    helper_last_controller_event: input_text.ikea_remote
+    action_button_up_short:
+      - service: light.turn_on
+        target:
+          entity_id: light.wled_monitor
+        data:
+          transition: 1
+          kelvin: 6500
+          brightness_pct: 15
+    action_button_down_short:
+      - service: light.turn_off
+        target:
+          entity_id: light.wled_monitor
+        data:
+          transition: 1

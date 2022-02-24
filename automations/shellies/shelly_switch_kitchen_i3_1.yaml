@@ -1,0 +1,17 @@
+alias: Shelly Switch - Kitchen i3 - 1
+description: 'Kitchen Shelly i3 Channel 1'
+use_blueprint:
+  path: nok/shelly-device-switch-template-for-each-click-type.yaml
+  input:
+    remote: 3075f851a93a47fe3fa40a9aadc7f42f
+    button_single:
+      - service: light.toggle
+        target:
+          entity_id: light.kitchen_cabinet_leds
+        data: {}
+    button_double:
+      - service: light.toggle
+        target:
+          entity_id:
+            - light.kitchen_cabinet_leds
+            - light.kitchen_sink_lights

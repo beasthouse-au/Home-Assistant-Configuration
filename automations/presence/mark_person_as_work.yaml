@@ -1,0 +1,28 @@
+alias: Mark person as work
+trigger:
+- platform: state
+  entity_id: input_select.damien_status_dropdown
+  to: Just Arrived Work
+  for:
+    minutes: 10
+- platform: state
+  entity_id: input_select.olia_status_dropdown
+  to: Just Arrived Work
+  for:
+    minutes: 10
+- platform: state
+  entity_id: input_select.damien_status_dropdown
+  from: Just Left Work
+  to: Just Arrived Work
+- platform: state
+  entity_id: input_select.olia_status_dropdown
+  from: Just Left Work
+  to: Just Arrived Work
+action:
+- service: input_select.select_option
+  data_template:
+    entity_id: "{% if trigger.entity_id == 'input_select.damien_status_dropdown'\
+      \ %}\n  input_select.damien_status_dropdown\n{% else %}\n  input_select.olia_status_dropdown\n\
+      {% endif %}\n"
+    option: Work
+id: ff1e0b06e2ff4f22b2b71c378b097a70

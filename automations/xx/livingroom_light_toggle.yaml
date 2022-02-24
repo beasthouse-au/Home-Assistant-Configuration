@@ -1,0 +1,15 @@
+# id: '20210628201620'
+# alias: Shelly - Livingroom Light Toggle
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: binary_sensor.shelly_livingroom_light_switch
+#   to:
+#   - 'on'
+#   - 'off'
+# condition: []
+# action:
+# - service: switch.toggle
+#   target:
+#     entity_id: switch.livingroom_lights
+# mode: single

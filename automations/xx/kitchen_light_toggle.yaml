@@ -1,0 +1,15 @@
+# id: '1624781614951'
+# alias: Shelly - Kitchen Light Toggle
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: binary_sensor.shelly_kitchen_light_switch
+#   to:
+#   - 'on'
+#   - 'off'
+# condition: []
+# action:
+# - service: switch.toggle
+#   target:
+#     entity_id: switch.kitchen_lights
+# mode: single

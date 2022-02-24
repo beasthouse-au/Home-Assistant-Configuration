@@ -1,0 +1,16 @@
+# alias: Christmas Tree Off
+# description: 'Christmas tree lights will turn off at midnight'
+# mode: single
+# trigger:
+#   - platform: time
+#     at: '00:01'
+# condition: []
+# action:
+#   - service: light.turn_off
+#     target:
+#       entity_id: 
+#         - light.christmas_tree
+#         - light.christmas_tree_star
+#     data:
+#       transition: 30
+# id: '202112092259'

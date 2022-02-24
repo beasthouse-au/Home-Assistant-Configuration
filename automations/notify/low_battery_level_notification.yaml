@@ -1,0 +1,26 @@
+id: '1625666588215'
+alias: Low battery level detection & notification for all battery sensors
+description: ''
+use_blueprint:
+  path: sbyx/low-battery-level-detection-notification-for-all-battery-sensors.yaml
+  input:
+    threshold: 15
+    actions:
+    - service: notify.mobile_app_damiens_iphone
+      data:
+        message: Low Battery Warning
+        data:
+          Low battery warning for:
+            '[object Object]':
+        title: Low Battery Warning
+    exclude:
+      entity_id:
+      - sensor.damiens_iphone_battery_level
+      - sensor.damiens_iphone_battery_state_2
+      - sensor.damiens_work_iphone_battery_state
+      - sensor.marys_iphone_battery_state
+      - sensor.olias_iphone_battery_level
+      - sensor.olias_iphone_battery_state
+      - sensor.olias_iphone_battery_state_2
+      - sensor.peters_iphone_battery_state
+      - sensor.olias_apple_watch_battery_state

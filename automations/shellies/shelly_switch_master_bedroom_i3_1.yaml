@@ -1,0 +1,23 @@
+alias: Shelly Switch - Master Bedroom i3 - 1
+description: 'Master Bedroom Shelly i3 Channel 1'
+use_blueprint:
+  path: nok/shelly-device-switch-template-for-each-click-type.yaml
+  input:
+    remote: d7949dd0eeddad0b1413c5a98481be3b
+    button_single:
+      - service: light.toggle
+        data:
+          transition: 1
+        target:
+          entity_id: light.master_bedroom_lamps
+    button_double:
+      - service: light.turn_on
+        data:
+          rgb_color:
+            - 255
+            - 0
+            - 0
+          transition: 1
+          brightness_pct: 20
+        target:
+          entity_id: light.master_bedroom_lamps

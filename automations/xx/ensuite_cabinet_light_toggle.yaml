@@ -1,0 +1,15 @@
+# id: '20210718123600'
+# alias: Shelly - Ensuite Cabinet Light Toggle
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: binary_sensor.shelly_ensuite_cabinet_light_switch
+#   to:
+#   - 'on'
+#   - 'off'
+# condition: []
+# action:
+# - service: switch.toggle
+#   target:
+#     entity_id: switch.shelly_ensuite_cabinet_light
+# mode: single

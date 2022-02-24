@@ -1,0 +1,12 @@
+# alias: Carport Christmas Lights On
+# description: "Carport christmas lights will turn on at 6pm"
+# mode: single
+# trigger:
+#   - platform: time
+#     at: "17:00"
+# condition: []
+# action:
+#   - service: switch.turn_on
+#     target:
+#       entity_id: switch.switch.carport_christmas_lights_smartplug
+# id: "202112182351"

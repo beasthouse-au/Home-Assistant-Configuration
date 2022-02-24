@@ -1,0 +1,12 @@
+# alias: Carport Christmas Lights Off
+# description: "Carport christmas lights will turn off at midnight"
+# mode: single
+# trigger:
+#   - platform: time
+#     at: "00:01"
+# condition: []
+# action:
+#   - service: switch.turn_off
+#     target:
+#       entity_id: switch.switch.carport_christmas_lights_smartplug
+# id: "202112182352"

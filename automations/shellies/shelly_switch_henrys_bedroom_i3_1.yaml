@@ -1,0 +1,114 @@
+id: '20220124202401'
+alias: "Henry's Shelly Switch"
+description: ''
+use_blueprint:
+  path: nok/shelly-device-switch-template-for-each-click-type.yaml
+  input:
+    remote: 523af32ef2eb235f18dc97441ba286b5
+    button_single:
+      - choose:
+          - conditions:
+              - condition: state
+                entity_id: light.wled_henrys_light
+                state: 'off'
+              - condition: time
+                after: '21:00'
+                before: '06:00'
+            sequence:
+              - service: light.turn_on
+                data:
+                  transition: 1
+                  rgbw_color:
+                    - 255
+                    - 0
+                    - 0
+                    - 0
+                  brightness_pct: 21
+                target:
+                  entity_id: light.wled_henrys_light
+          - conditions:
+              - condition: state
+                entity_id: light.wled_henrys_light
+                state: 'off'
+            sequence:
+              - service: light.turn_on
+                data:
+                  transition: 1
+                  rgbw_color:
+                    - 0
+                    - 0
+                    - 0
+                    - 255
+                  brightness_pct: 41
+                target:
+                  entity_id: light.wled_henrys_light
+        default:
+          - service: light.turn_off
+            data:
+              transition: 1
+            target:
+              entity_id: light.wled_henrys_light
+    button_long:
+      - service: light.turn_on
+        data:
+          rgbw_color:
+            - 0
+            - 0
+            - 0
+            - 255
+          transition: 1
+          brightness: 41
+        target:
+          entity_id: light.wled_henrys_light
+# mode: single
+# trigger:
+#   - platform: event
+#     event_type: shelly.click
+#     event_data:
+#       device: shellyix3-98CDAC254DE8
+#       channel: 1
+#       click_type: single
+# condition: []
+# action:
+#   - choose:
+#       - conditions:
+#           - condition: state
+#             entity_id: light.wled_henrys_light
+#             state: 'off'
+#           - condition: time
+#             after: '21:00'
+#             before: '06:00'
+#         sequence:
+#           - service: light.turn_on
+#             data:
+#               transition: 1
+#               rgbw_color:
+#                 - 255
+#                 - 0
+#                 - 0
+#                 - 0
+#               brightness_pct: 21
+#             target:
+#               entity_id: light.wled_henrys_light
+#       - conditions:
+#           - condition: state
+#             entity_id: light.wled_henrys_light
+#             state: 'off'
+#         sequence:
+#           - service: light.turn_on
+#             data:
+#               transition: 1
+#               rgbw_color:
+#                 - 0
+#                 - 0
+#                 - 0
+#                 - 255
+#               brightness_pct: 41
+#             target:
+#               entity_id: light.wled_henrys_light
+#     default:
+#       - service: light.turn_off
+#         data:
+#           transition: 1
+#         target:
+#           entity_id: light.wled_henrys_light

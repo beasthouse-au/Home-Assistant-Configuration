@@ -1,0 +1,34 @@
+# id: '1624782047052'
+# alias: Shelly - Henrys Room Light Toggle
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: binary_sensor.shelly_henrys_room_light_switch
+#   to:
+#   - 'on'
+#   - 'off'
+# condition: []
+# action:
+# - choose:
+#   - conditions:
+#     - condition: time
+#       after: '20:00'
+#       before: 06:00
+#     sequence:
+#     - service: light.toggle
+#       target:
+#         entity_id: light.henrys_room_lamp_1
+#       data:
+#         transition: 1
+#         rgb_color:
+#         - 255
+#         - 0
+#         - 0
+#         brightness_pct: 50
+#   default:
+#   - service: light.toggle
+#     target:
+#       entity_id: light.henrys_room_lights
+#     data:
+#       transition: 1
+# mode: single

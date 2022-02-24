@@ -1,0 +1,12 @@
+id: '20220201002200'
+alias: Nightly Sonos Reset
+description: At 4am Sonos devices will be ungrouped
+trigger:
+  - platform: time
+    at: '04:00'
+action:
+  - service: sonos.unjoin
+    target:
+      entity_id:
+        - media_player.family_room
+        - media_player.rumpus_room

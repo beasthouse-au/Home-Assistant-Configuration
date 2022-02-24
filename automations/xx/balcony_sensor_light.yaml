@@ -1,0 +1,39 @@
+# id: '1618837298770'
+# alias: Balcony Sensor Light
+# description: Balcony and Entrance Sensor Light
+# trigger:
+# - platform: state
+#   entity_id: binary_sensor.balcony_motionsensor_occupancy
+#   to: 'on'
+# condition:
+# - condition: state
+#   entity_id: sun.sun
+#   state: below_horizon
+# - condition: and
+#   conditions:
+#   - condition: state
+#     entity_id: light.balcony_ceiling_1
+#     state: 'off'
+#   - condition: state
+#     entity_id: light.balcony_ceiling_2
+#     state: 'off'
+# action:
+# - service: light.turn_on
+#   data:
+#     brightness_pct: 100
+#   target:
+#     entity_id: light.balcony_lights
+# - service: light.turn_on
+#   data:
+#     transition: 2
+#   target:
+#     entity_id: light.entrance_ceiling
+# - wait_for_trigger:
+#   - platform: state
+#     entity_id: binary_sensor.balcony_motionsensor_occupancy
+#     to: 'off'
+#     for: 0:02:30
+# - service: light.turn_off
+#   target:
+#     entity_id: light.sensor_lights
+# mode: single

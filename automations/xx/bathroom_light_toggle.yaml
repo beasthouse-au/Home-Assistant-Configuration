@@ -1,0 +1,17 @@
+# id: '1624782014647'
+# alias: Shelly - Bathroom Light Toggle
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: binary_sensor.shelly_bathroom_light_switch
+#   to:
+#   - 'on'
+#   - 'off'
+# condition: []
+# action:
+# - service: light.toggle
+#   target:
+#     entity_id: light.bathroom_lights
+#   data:
+#     transition: 1
+# mode: single

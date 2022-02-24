@@ -1,0 +1,28 @@
+alias: Mark person as home
+trigger:
+- platform: state
+  entity_id: input_select.damien_status_dropdown
+  to: Just Arrived
+  for:
+    minutes: 10
+- platform: state
+  entity_id: input_select.olia_status_dropdown
+  to: Just Arrived
+  for:
+    minutes: 10
+- platform: state
+  entity_id: input_select.damien_status_dropdown
+  from: Just Left
+  to: Just Arrived
+- platform: state
+  entity_id: input_select.olia_status_dropdown
+  from: Just Left
+  to: Just Arrived
+action:
+- service: input_select.select_option
+  data_template:
+    entity_id: "{% if trigger.entity_id == 'input_select.damien_status_dropdown'\
+      \ %}\n  input_select.damien_status_dropdown\n{% else %}\n  input_select.olia_status_dropdown\n\
+      {% endif %}\n"
+    option: Home
+id: 6be8f9c7f3fc4b9fa1bbc5c551d67131
