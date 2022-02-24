@@ -5,7 +5,7 @@ views:
     layout:
       panel: false
     theme: Google Dark Theme
-    background: var(--background-image)
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
     icon: mdi:home
     badges: []
     cards:
@@ -25,13 +25,130 @@ views:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
           - type: grid
             cards:
               - type: custom:button-card
-                entity: light.bedroom_lamps
+                entity: light.front_door
+                hold_action:
+                  action: more-info
+                name: Entrance
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                entity: light.entrance
+                hold_action:
+                  action: more-info
+                name: Entrance
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:door-open;
+                      }
+              - type: custom:button-card
+                entity: light.outdoors_front
+                hold_action:
+                  action: more-info
+                name: Outdoors Front
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: hue:room-carport;
+                      }
+              - type: custom:button-card
+                entity: light.hallway
+                hold_action:
+                  action: more-info
+                name: Hallway
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:light-recessed;
+                      }
+              - type: custom:button-card
+                entity: light.kitchen
+                hold_action:
+                  action: more-info
+                name: Kitchen
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:stove;
+                      }
+              - type: custom:button-card
+                entity: light.dining_room
+                hold_action:
+                  action: more-info
+                name: Dining Room
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: hue:room-dining;
+                      }
+              - type: custom:button-card
+                entity: light.master_bedroom
                 hold_action:
                   action: more-info
                 name: Master Bedroom
@@ -44,34 +161,14 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                       :host {
-                        --card-mod-icon: mdi:bed-king-outline;
+                        --card-mod-icon: hue:room-bedroom;
                       }
               - type: custom:button-card
-                entity: light.office_desk_lamp
-                hold_action:
-                  action: more-info
-                name: Office
-                aspect_ratio: 1.8/1
-                size: 30%
-                styles:
-                  icon:
-                    - color: var(--button-card-light-color)
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-                      :host {
-                        --card-mod-icon: mdi:desktop-classic;
-                      }
-              - type: custom:button-card
-                entity: light.wled_henrys_light
+                entity: light.henrys_bedroom
                 hold_action:
                   action: more-info
                 name: Henry's Room
@@ -84,11 +181,111 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                       :host {
                         --card-mod-icon: mdi:bed-single-outline;
+                      }
+              - type: custom:button-card
+                entity: light.spare_bedroom
+                hold_action:
+                  action: more-info
+                name: Spare Bedroom
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: hue:room-guestroom;
+                      }
+              - type: custom:button-card
+                entity: light.family_room_ceiling
+                hold_action:
+                  action: more-info
+                name: Family Room
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: hue:room-lounge;
+                      }
+              - type: custom:button-card
+                entity: light.office
+                hold_action:
+                  action: more-info
+                name: Office
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: hue:room-office;
+                      }
+              - type: custom:button-card
+                entity: light.workshop
+                hold_action:
+                  action: more-info
+                name: Workshop
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:hammer-wrench;
+                      }
+              - type: custom:button-card
+                entity: light.underhouse_storage
+                hold_action:
+                  action: more-info
+                name: Storage
+                aspect_ratio: 1.8/1
+                size: 30%
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                      :host {
+                        --card-mod-icon: mdi:warehouse;
                       }
             columns: 3
             square: false
@@ -110,7 +307,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -129,7 +326,7 @@ views:
                     color: red
                 tap_action:
                   action: navigate
-                  navigation_path: /hassio/dashboard
+                  navigation_path: /config/dashboard
               - type: custom:button-card
                 entity: sensor.hacs
                 show_icon: true
@@ -140,7 +337,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -170,7 +367,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -192,7 +389,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -217,7 +414,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
             columns: 1
@@ -225,7 +422,7 @@ views:
           - type: custom:bom-weather-card
             title: BOM Weather
             entity_current_conditions: sensor.sylvania_icon_descriptor_0
-            entity_temperature: sensor.lucas_heights_temp
+            entity_temperature: sensor.sydney_airport_temp
             entity_forecast_high_temp_1: sensor.sylvania_temp_max_1
             entity_forecast_high_temp_2: sensor.sylvania_temp_max_2
             entity_forecast_high_temp_3: sensor.sylvania_temp_max_3
@@ -246,10 +443,10 @@ views:
             entity_summary_3: sensor.sylvania_short_text_3
             entity_summary_4: sensor.sylvania_short_text_4
             entity_summary_5: sensor.sylvania_short_text_5
-            entity_apparent_temp: sensor.lucas_heights_temp_feels_like
+            entity_apparent_temp: sensor.sydney_airport_temp_feels_like
             entity_daily_summary: sensor.sylvania_extended_text_0
             entity_pop: sensor.sylvania_rain_chance_0
-            entity_pop_intensity: sensor.lucas_heights_rain_since_9am
+            entity_pop_intensity: sensor.sydney_airport_rain_since_9am
             entity_possible_today: sensor.sylvania_rain_amount_range_0
             entity_pos_1: sensor.sylvania_rain_amount_range_1
             entity_pos_2: sensor.sylvania_rain_amount_range_2
@@ -262,16 +459,18 @@ views:
             entity_pop_4: sensor.sylvania_rain_chance_4
             entity_pop_5: sensor.sylvania_rain_chance_5
             entity_uv_alert_summary: sensor.sylvania_uv_category_0
-            entity_humidity: sensor.lucas_heights_humidity
-            entity_wind_bearing: sensor.lucas_heights_wind_direction
-            entity_wind_speed: sensor.lucas_heights_wind_speed_kilometre
+            entity_humidity: sensor.sydney_airport_humidity
+            entity_wind_bearing: sensor.sydney_airport_wind_direction
+            entity_wind_speed: sensor.sydney_airport_wind_speed_kilometre
+            entity_wind_gust: sensor.sydney_airport_gust_speed_kilometre
             entity_daytime_high: sensor.bom_today_max
             entity_daytime_low: sensor.bom_today_min
+            entity_sun: sun.sun
             card_mod:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
             columns: 1
@@ -287,20 +486,20 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
               - type: custom:button-card
                 icon: mdi:music
                 tap_action:
                   action: navigate
-                  navigation_path: /lovelace/media
+                  navigation_path: /lovelace/sonos
                 aspect_ratio: 2/0.5
                 card_mod:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
               - type: custom:button-card
@@ -313,7 +512,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
             columns: 3
@@ -332,7 +531,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -348,7 +547,7 @@ views:
           - type: grid
             cards:
               - type: custom:button-card
-                entity: light.bedroom_lamps
+                entity: light.master_bedroom_lamps
                 hold_action:
                   action: more-info
                 name: Bedroom
@@ -364,17 +563,17 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
                 size: 30%
               - type: custom:button-card
-                entity: light.wled_henrys_bedhead
+                entity: light.wled_henrys_light
                 hold_action:
                   action: more-info
                 name: Henry's Room
-                icon: mdi:lamp
+                icon: hue:lightstrip
                 show_icon: true
                 show_state: false
                 show_units: false
@@ -386,17 +585,17 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
                 size: 30%
               - type: custom:button-card
-                entity: light.office_desk_lamp
+                entity: light.spare_bedroom_lamps
                 hold_action:
                   action: more-info
-                name: Office
-                icon: mdi:lamp
+                name: Spare Room
+                icon: mdi:lamps
                 show_icon: true
                 show_state: false
                 show_units: false
@@ -408,7 +607,7 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -418,7 +617,7 @@ views:
                 hold_action:
                   action: more-info
                 name: Office Desk
-                icon: mdi:lamp
+                icon: hue:bulb-filament
                 show_icon: true
                 show_state: false
                 show_units: false
@@ -430,7 +629,117 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.wled_monitor
+                hold_action:
+                  action: more-info
+                name: Monitor Light
+                icon: hue:room-computer
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.office_wall_lamp
+                hold_action:
+                  action: more-info
+                name: Office Wall
+                icon: hue:desk-lamp
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.kitchen_cabinet_leds
+                hold_action:
+                  action: more-info
+                name: Cabinet
+                icon: hue:lightstrip
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.hallway_picture_light
+                hold_action:
+                  action: more-info
+                name: Hallway
+                icon: mdi:image
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+                aspect_ratio: 1.8/1
+                size: 30%
+              - type: custom:button-card
+                entity: light.dining_room_picture_shelly
+                hold_action:
+                  action: more-info
+                name: Dining Room
+                icon: mdi:image
+                show_icon: true
+                show_state: false
+                show_units: false
+                show_name: true
+                styles:
+                  icon:
+                    - color: var(--button-card-light-color)
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
                 aspect_ratio: 1.8/1
@@ -443,6 +752,7 @@ views:
     path: vacuum
     icon: mdi:robot-vacuum
     theme: Google Dark Theme
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
     layout: {}
     type: custom:masonry-layout
     badges: []
@@ -452,7 +762,7 @@ views:
           - type: custom:xiaomi-vacuum-map-card
             title: Xiaomi Vacuum Map Card
             preset_name: Live map
-            entity: vacuum.roborock_vacuum_a10
+            entity: vacuum.roborock_s6_maxv
             map_source:
               camera: camera.xiaomi_cloud_map_extractor
             calibration_source:
@@ -577,7 +887,7 @@ views:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
           - type: grid
@@ -592,20 +902,20 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
               - type: custom:button-card
                 icon: mdi:music
                 tap_action:
                   action: navigate
-                  navigation_path: /lovelace/media
+                  navigation_path: /lovelace/sonos
                 aspect_ratio: 2/0.5
                 card_mod:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
               - type: custom:button-card
@@ -618,443 +928,17 @@ views:
                   style: |
                     ha-card {
                       background-color: var(--primary-background-color);
-                      background: none;
+                      background: rgb(0, 49, 83, 0.4);
                       box-shadow: none;
                       }
             columns: 3
             square: false
         columns: 1
         square: false
-  - title: Media
-    path: media
-    icon: mdi:music
-    type: custom:horizontal-layout
-    layout:
-      panel: true
-    theme: Google Dark Theme
-    badges: []
-    cards:
-      - type: grid
-        cards:
-          - type: grid
-            cards:
-              - type: picture-entity
-                entity: script.spotify_fresh_country
-                image: >-
-                  https://i.scdn.co/image/ab67706f000000036b4c4cacdf446dbcd26da7a5
-                show_name: false
-                show_state: false
-                theme: Google Dark Theme
-                state_filter:
-                  'on': brightness(100%)
-                  'off': brightness(100%)
-                tap_action:
-                  action: toggle
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: picture-entity
-                entity: script.spotify_nashville_worldwide_hot_50
-                image: >-
-                  https://i.scdn.co/image/ab67706f0000000335e45382b59be1c6a0a8916f
-                show_name: false
-                show_state: false
-                theme: Google Dark Theme
-                state_filter:
-                  'on': brightness(100%)
-                  'off': brightness(100%)
-                tap_action:
-                  action: toggle
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: picture-entity
-                entity: script.spotify_eurovision_2021
-                image: >-
-                  https://i.scdn.co/image/ab67706f00000003fac40ee3fc3d34b5583800ea
-                show_name: false
-                show_state: false
-                theme: Google Dark Theme
-                state_filter:
-                  'on': brightness(100%)
-                  'off': brightness(100%)
-                tap_action:
-                  action: toggle
-            square: false
-          - type: custom:mini-media-player
-            name: Spotify
-            entity: media_player.spotify_damien_seidel
-            source: full
-            sound_mode: full
-            info: scroll
-            volume_step: '5'
-            max_volume: '1'
-            min_volume: '100'
-            theme: Google Dark Theme
-            artwork: material
-            card_mod:
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  background: none;
-                  box-shadow: none;
-                  }
-          - type: grid
-            cards:
-              - type: picture-entity
-                entity: script.spotify_smooth_jazz
-                image: >-
-                  https://i.scdn.co/image/ab67706f000000034442b63c730c0b491387b062
-                show_name: false
-                show_state: false
-                theme: Google Dark Theme
-                state_filter:
-                  'on': brightness(100%)
-                  'off': brightness(100%)
-                tap_action:
-                  action: toggle
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: picture-entity
-                entity: script.spotify_pub_classics
-                image: >-
-                  https://i.scdn.co/image/ab67706f00000003b873662fe1e9521069a6f719
-                show_name: false
-                show_state: false
-                theme: Google Dark Theme
-                state_filter:
-                  'on': brightness(100%)
-                  'off': brightness(100%)
-                tap_action:
-                  action: toggle
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: picture-entity
-                entity: script.spotify_lounge_chillout_music
-                image: >-
-                  https://i.scdn.co/image/ab67706c0000bebb0c9c46ce66230bd50d185b5c
-                show_name: false
-                show_state: false
-                theme: Google Dark Theme
-                state_filter:
-                  'on': brightness(100%)
-                  'off': brightness(100%)
-                tap_action:
-                  action: toggle
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-          - type: grid
-            cards:
-              - type: custom:button-card
-                tap_action:
-                  action: call-service
-                  service: media_player.volume_down
-                  service_data:
-                    entity_id: media_player.sony_amp_songpal
-                icon: mdi:volume-minus
-                aspect_ratio: 1/1
-                show_name: false
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                tap_action:
-                  action: call-service
-                  service: media_player.media_previous_track
-                  service_data:
-                    entity_id: media_player.spotify_damien_seidel
-                icon: mdi:rewind
-                aspect_ratio: 1/1
-                show_name: false
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                tap_action:
-                  action: call-service
-                  service: media_player.media_play_pause
-                  service_data:
-                    entity_id: media_player.spotify_damien_seidel
-                icon: mdi:play
-                entity: media_player.spotify_damien_seidel
-                aspect_ratio: 1/1
-                show_name: false
-                state:
-                  - value: playing
-                    icon: mdi:pause
-                  - value: paused
-                    icon: mdi:play
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                tap_action:
-                  action: call-service
-                  service: media_player.media_next_track
-                  service_data:
-                    entity_id: media_player.spotify_damien_seidel
-                icon: mdi:fast-forward
-                aspect_ratio: 1/1
-                show_name: false
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                tap_action:
-                  action: call-service
-                  service: media_player.volume_up
-                  service_data:
-                    entity_id: media_player.sony_amp_songpal
-                icon: mdi:volume-plus
-                aspect_ratio: 1/1
-                show_name: false
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-            columns: 5
-            square: false
-          - type: grid
-            cards:
-              - type: custom:button-card
-                tap_action:
-                  action: toggle
-                entity: switch.livingroom_tv
-                show_name: false
-                aspect_ratio: 2/0.5
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                tap_action:
-                  action: toggle
-                entity: switch.livingroom_amp
-                show_name: false
-                aspect_ratio: 2/0.5
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-            columns: 2
-            square: false
-          - type: grid
-            cards:
-              - type: custom:button-card
-                icon: mdi:home
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/home
-                aspect_ratio: 2/0.5
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                icon: mdi:robot-vacuum
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/vacuum
-                aspect_ratio: 2/0.5
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-              - type: custom:button-card
-                icon: mdi:light-switch
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/shelly
-                aspect_ratio: 2/0.5
-                card_mod:
-                  style: |
-                    ha-card {
-                      background-color: var(--primary-background-color);
-                      background: none;
-                      box-shadow: none;
-                      }
-            columns: 3
-            square: false
-        columns: 1
-        square: false
-  - title: Shelly
-    path: shelly
-    icon: mdi:light-switch
-    theme: Google Dark Theme
-    badges: []
-    cards:
-      - aspect_ratio: 3
-        color: auto
-        color_type: card
-        entity: light.office_desk_lamp
-        name: Desk Lamp
-        haptic: success
-        icon: mdi:lamp
-        hold_action:
-          action: more-info
-        show_last_changed: true
-        show_state: true
-        state:
-          - styles:
-              card:
-                - filter: opacity(50%)
-                - background: var(--primary-background-color)
-                - '--mdc-ripple-color': yellow
-                - '--mdc-ripple-press-opacity': 0.5
-                - font-size: 14px
-              icon:
-                - filter: grayscale(100%)
-              label:
-                - font-size: 11px
-            value: 'off'
-          - styles:
-              card:
-                - '--mdc-ripple-color': yellow
-                - '--mdc-ripple-press-opacity': 0.5
-                - font-size: 16px
-              icon:
-                - filter: grayscale(100%)
-              label:
-                - font-size: 11px
-            value: 'on'
-        type: custom:button-card
-      - aspect_ratio: 3
-        color: auto
-        color_type: card
-        entity: light.henrys_room_lamps
-        name: Henry's Room Lamp
-        haptic: success
-        hold_action:
-          action: more-info
-        show_last_changed: true
-        show_state: true
-        state:
-          - styles:
-              card:
-                - filter: opacity(50%)
-                - background: var(--primary-background-color)
-                - '--mdc-ripple-color': yellow
-                - '--mdc-ripple-press-opacity': 0.5
-                - font-size: 14px
-              icon:
-                - filter: grayscale(100%)
-              label:
-                - font-size: 11px
-            value: 'off'
-          - styles:
-              card:
-                - '--mdc-ripple-color': yellow
-                - '--mdc-ripple-press-opacity': 0.5
-                - font-size: 16px
-              icon:
-                - filter: grayscale(100%)
-              label:
-                - font-size: 11px
-            value: 'on'
-        type: custom:button-card
-      - type: entities
-        entities:
-          - entity: switch.livingroom_tv
-            name: TV
-          - entity: switch.livingroom_amp
-            name: Amp
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: entity
-        entity: binary_sensor.kitchen_tablet_motion
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: entities
-        entities:
-          - sensor.wled_estimated_current
-          - switch.wled_nightlight
-          - select.wled_playlist
-          - select.wled_preset
-          - switch.wled_sync_receive
-          - switch.wled_sync_send
-      - type: light
-        entity: light.wled_henrys_light
-        name: Henry's Bedhead
-      - type: light
-        entity: light.wled_monitor
-        name: Monitor
-      - type: light
-        entity: light.henrys_room_hue_play_bars
-        name: Henry's Hue Play Bars
-      - type: button
-        tap_action:
-          action: toggle
-        entity: light.christmas_tree_master
-        name: Christmas Tree
-        show_state: false
   - title: Testing
     path: testing
     theme: Google Dark Theme
-    background: var(--background-image)
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
     icon: mdi:gauge
     type: custom:masonry-layout
     badges:
@@ -1084,7 +968,7 @@ views:
             name: Damien Status
             show_state: false
             entities:
-              - entity: device_tracker.damien_phone
+              - entity: device_tracker.damiens_iphone_2
                 name: Phone
               - entity: device_tracker.damiens_iphone
                 name: iCloud
@@ -1169,44 +1053,36 @@ views:
                 name: Download Speed
               - entity: sensor.qbittorrent_up_speed
                 name: Upload Speed
+        theme: Google Dark Theme
         card_mod:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
         entities:
-          - entity: sensor.home_temperature_average_rounded
+          - entity: sensor.carport_motion_sensor_temperature
             icon: mdi:thermometer
             name: Home Average
-          - entity: sensor.entrance_weather_temperature
-            name: Entrance
+          - entity: sensor.dining_room_temperature_humidity_sensor_temperature
+            name: Dining Room
             icon: mdi:thermometer
-          - entity: sensor.livingroom_weather_temperature
-            name: Living Room
+          - entity: sensor.henrys_bedroom_temperature_humidity_sensor_temperature
+            name: Henry's Room
             icon: mdi:thermometer
-          - entity: sensor.dining_weather_temperature
-            name: Dining
+          - entity: sensor.cellar_temperature_humidity_sensor_temperature
+            name: Cellar
             icon: mdi:thermometer
-          - entity: sensor.hallway_motionsensor_temperature
-            name: Hallway
+          - entity: sensor.master_bedroom_temperature_humidity_sensor_temperature
+            name: Master Bedroom
             icon: mdi:thermometer
-          - entity: sensor.bathroom_weather_temperature
-            name: Bathroom
+          - entity: sensor.kitchen_temperature_humidity_sensor_temperature
+            name: Kitchen
             icon: mdi:thermometer
-          - entity: sensor.bedroom_weather_temperature
-            name: Bedroom
-            icon: mdi:thermometer
-          - entity: sensor.ensuite_weather_temperature
-            name: Ensuite
-            icon: mdi:thermometer
-          - entity: sensor.office_weather_temperature
+          - entity: sensor.office_temperature_humidity_sensor_temperature
             name: Office
-            icon: mdi:thermometer
-          - entity: sensor.henrys_room_weather_temperature
-            name: Spare Room
             icon: mdi:thermometer
         title: Temperature
         columns: 1
@@ -1215,30 +1091,29 @@ views:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
         entities:
-          - entity: sensor.home_humidity_average_rounded
+          - entity: sensor.dining_room_temperature_humidity_sensor_humidity
+            name: Dining Room
             icon: mdi:water-percent
-            name: Home Average
-          - entity: sensor.entrance_weather_humidity
-            name: Entrance
-          - entity: sensor.livingroom_weather_humidity
-            name: Living Room
-          - entity: sensor.dining_weather_humidity
-            name: Dining
-          - entity: sensor.bathroom_weather_humidity
-            name: Bathroom
-          - entity: sensor.bedroom_weather_humidity
-            name: Bedroom
-          - entity: sensor.ensuite_weather_humidity
-            name: Ensuite
-          - entity: sensor.office_weather_humidity
+          - entity: sensor.henrys_bedroom_temperature_humidity_sensor_humidity
+            name: Henry's Room
+            icon: mdi:water-percent
+          - entity: sensor.cellar_temperature_humidity_sensor_humidity
+            name: Cellar
+            icon: mdi:water-percent
+          - entity: sensor.master_bedroom_temperature_humidity_sensor_humidity
+            name: Master Bedroom
+            icon: mdi:water-percent
+          - entity: sensor.kitchen_temperature_humidity_sensor_humidity
+            name: Kitchen
+            icon: mdi:water-percent
+          - entity: sensor.office_temperature_humidity_sensor_humidity
             name: Office
-          - entity: sensor.henrys_room_weather_humidity
-            name: Spare Room
+            icon: mdi:water-percent
         title: Humidity
         columns: 1
         square: false
@@ -1246,30 +1121,29 @@ views:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
         entities:
-          - entity: sensor.home_pressure_average_rounded
+          - entity: sensor.dining_room_temperature_humidity_sensor_pressure
+            name: Dining Room
             icon: mdi:gauge
-            name: Home Average
-          - entity: sensor.entrance_weather_pressure
-            name: Entrance
-          - entity: sensor.livingroom_weather_pressure
-            name: Living Room
-          - entity: sensor.dining_weather_pressure
-            name: Dining
-          - entity: sensor.bathroom_weather_pressure
-            name: Bathroom
-          - entity: sensor.bedroom_weather_pressure
-            name: Bedroom
-          - entity: sensor.ensuite_weather_pressure
-            name: Ensuite
-          - entity: sensor.office_weather_pressure
+          - entity: sensor.henrys_bedroom_temperature_humidity_sensor_pressure
+            name: Henry's Room
+            icon: mdi:gauge
+          - entity: sensor.cellar_temperature_humidity_sensor_pressure
+            name: Cellar
+            icon: mdi:gauge
+          - entity: sensor.master_bedroom_temperature_humidity_sensor_pressure
+            name: Master Bedroom
+            icon: mdi:gauge
+          - entity: sensor.kitchen_temperature_humidity_sensor_pressure
+            name: Kitchen
+            icon: mdi:gauge
+          - entity: sensor.office_temperature_humidity_sensor_pressure
             name: Office
-          - entity: sensor.henrys_room_weather_pressure
-            name: Spare Room
+            icon: mdi:gauge
         title: Pressure
         columns: 1
         square: false
@@ -1277,42 +1151,20 @@ views:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
         entities:
-          - entity: binary_sensor.entrance_door_contact
-          - entity: binary_sensor.livingroom_door_contact
-          - entity: binary_sensor.office_door_contact
-          - entity: binary_sensor.henrys_room_door_contact
+          - entity: binary_sensor.workshop_door_sensor_contact
+          - entity: binary_sensor.washing_machine_door
+          - entity: binary_sensor.tumble_dryer_door
         title: Door Sensors
         card_mod:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: media-control
-        entity: media_player.spotify_damien_seidel
-        theme: ios-dark-mode
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: entities
-        entities:
-          - entity: light.bathroom_lights
-          - entity: light.ensuite_lights
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
@@ -1326,33 +1178,20 @@ views:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
         entities:
-          - entity: sensor.entrance_motionsensor_illuminance_lux
-          - entity: sensor.livingroom_motionsensor_illuminance_lux
-          - entity: sensor.dining_motionsensor_illuminance_lux
-          - entity: sensor.kitchen_motionsensor_illuminance_lux
-          - entity: sensor.hallway_motionsensor_illuminance_lux
-          - entity: sensor.balcony_motionsensor_illuminance_lux
+          - entity: sensor.carport_motion_sensor_illuminance_lux
+          - entity: sensor.workshop_motion_sensor_illuminance_lux
         title: Lux
         state_color: false
         card_mod:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: entity
-        entity: cover.bedroom_blind
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
   - title: Network
@@ -1360,127 +1199,9 @@ views:
     icon: mdi:graphql
     type: custom:horizontal-layout
     theme: Google Dark Theme
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
     badges: []
     cards:
-      - type: entities
-        entities:
-          - entity: sensor.fridge_cost_today
-            name: Fridge Cost Today
-            icon: mdi:currency-usd
-          - entity: sensor.dishwasher_cost_today
-            name: Dishwasher Cost Today
-            icon: mdi:currency-usd
-          - entity: sensor.server_cost_today
-            name: Server Cost Today
-            icon: mdi:currency-usd
-          - entity: sensor.gamingrig_cost_today
-            name: Gaming Rig Cost Today
-            icon: mdi:currency-usd
-          - entity: sensor.tv_cost_today
-            name: TV Cost Today
-            icon: mdi:currency-usd
-          - entity: sensor.total_cost_today
-            name: Total Cost Today
-            icon: mdi:currency-usd
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: entities
-        entities:
-          - entity: sensor.fridge_cost_yesterday
-            name: Fridge Cost Yesterday
-            icon: mdi:currency-usd
-          - entity: sensor.dishwasher_cost_yesterday
-            name: Dishwasher Cost Yesterday
-            icon: mdi:currency-usd
-          - entity: sensor.server_cost_yesterday
-            name: Server Cost Yesterday
-            icon: mdi:currency-usd
-          - entity: sensor.gamingrig_cost_yesterday
-            name: Gaming Rig Cost Yesterday
-            icon: mdi:currency-usd
-          - entity: sensor.tv_cost_yesterday
-            name: TV  Cost Yesterday
-            icon: mdi:currency-usd
-          - entity: sensor.total_cost_yesterday
-            name: Total Cost Yesterday
-            icon: mdi:currency-usd
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: grid
-        cards:
-          - type: custom:mini-graph-card
-            name: Power Today
-            icon: mdi:flash
-            line_width: 4
-            animate: true
-            hours_to_show: 24
-            points_per_hour: 1
-            entities:
-              - entity: sensor.kitchen_fridge_smartplug_energy_today
-                name: Fridge
-              - entity: sensor.kitchen_dishwasher_smartplug_energy_today
-                name: Dishwasher
-              - entity: sensor.server_smartplug_energy_today
-                name: Server
-              - entity: sensor.gamingrig_smartplug_energy_today
-                name: Gaming Rig
-              - entity: sensor.tv_smartplug_energy_today
-                name: TV
-            show:
-              state: false
-            card_mod:
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  background: none;
-                  box-shadow: none;
-                  }
-          - type: custom:mini-graph-card
-            name: Power
-            icon: mdi:flash
-            line_width: 4
-            animate: true
-            hours_to_show: 24
-            points_per_hour: 1
-            entities:
-              - entity: sensor.kitchen_fridge_smartplug_energy_total
-                name: Fridge
-              - entity: sensor.kitchen_dishwasher_smartplug_energy_total
-                name: Dishwasher
-              - entity: sensor.server_smartplug_energy_total
-                name: Server
-              - entity: sensor.gamingrig_smartplug_energy_total
-                name: Gaming Rig
-              - entity: sensor.tv_smartplug_energy_total
-                name: TV
-            show:
-              state: false
-            card_mod:
-              style: |
-                ha-card {
-                  background-color: var(--primary-background-color);
-                  background: none;
-                  box-shadow: none;
-                  }
-        columns: 1
-        square: false
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
       - type: custom:mini-graph-card
         name: Air Quality Inside
         icon: mdi:server
@@ -1499,23 +1220,7 @@ views:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
-              box-shadow: none;
-              }
-      - type: custom:mini-graph-card
-        entities:
-          - entity: sensor.energy_consumption
-        name: ENERGY CONSUMPTION
-        hours_to_show: 168
-        aggregate_func: max
-        group_by: date
-        show:
-          graph: bar
-        card_mod:
-          style: |
-            ha-card {
-              background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: entities
@@ -1527,7 +1232,7 @@ views:
           style: |
             ha-card {
               background-color: var(--primary-background-color);
-              background: none;
+              background: rgb(0, 49, 83, 0.4);
               box-shadow: none;
               }
       - type: grid
@@ -1550,7 +1255,7 @@ views:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
           - type: custom:mini-graph-card
@@ -1571,7 +1276,7 @@ views:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
         columns: 1
@@ -1588,7 +1293,7 @@ views:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
           - type: statistics-graph
@@ -1604,7 +1309,7 @@ views:
               style: |
                 ha-card {
                   background-color: var(--primary-background-color);
-                  background: none;
+                  background: rgb(0, 49, 83, 0.4);
                   box-shadow: none;
                   }
         columns: 1
@@ -1614,9 +1319,17 @@ views:
           - entity: sensor.esp32_temperature
           - entity: sensor.esp32_humidity
         title: My ESP Temperature Sensor
+        card_mod:
+          style: |
+            ha-card {
+              background-color: var(--primary-background-color);
+              background: rgb(0, 49, 83, 0.4);
+              box-shadow: none;
+              }
   - title: Map
     path: map
     theme: Google Dark Theme
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
     type: panel
     icon: mdi:map
     badges: []
@@ -1628,3 +1341,241 @@ views:
           - entity: zone.home
         dark_mode: false
         default_zoom: 16
+  - title: Sonos
+    path: sonos
+    icon: mdi:cast-audio
+    type: panel
+    theme: Google Dark Theme
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
+    layout: {}
+    badges: []
+    cards:
+      - type: custom:custom-sonos-card
+        name: ''
+        groupsTitle: Devices
+        groupingTitle: ''
+        favoritesTitle: ' Favorites'
+        headerImage: ''
+        shuffleFavorites: false
+        noMediaText: No media selected
+        allVolumesText: All volumes
+        entityNameRegex: /SONOS //
+        entities:
+          - media_player.family_room
+          - media_player.rumpus_room
+        theme: Google Dark Theme
+  - title: Media
+    path: media
+    icon: mdi:music
+    type: custom:horizontal-layout
+    layout:
+      panel: true
+    theme: Google Dark Theme
+    background: center / cover no-repeat fixed url("/local/img/wallpaper_1.jpg")
+    badges: []
+    cards:
+      - type: grid
+        cards:
+          - type: custom:upcoming-media-card
+            entity: sensor.radarr_upcoming_media
+            title: Upcoming Movies
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: rgb(0, 49, 83, 0.4);
+                  box-shadow: none;
+                  }
+          - type: custom:upcoming-media-card
+            entity: sensor.emby_latest_movies
+            title: Latest Movies
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: rgb(0, 49, 83, 0.4);
+                  box-shadow: none;
+                  }
+        square: false
+        columns: 1
+      - type: grid
+        cards:
+          - type: grid
+            cards:
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_down
+                  service_data:
+                    entity_id: media_player.family_room
+                icon: mdi:volume-minus
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.media_previous_track
+                  service_data:
+                    entity_id: media_player.family_room
+                icon: mdi:rewind
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data:
+                    entity_id: media_player.family_room
+                icon: mdi:play
+                entity: media_player.family_room
+                aspect_ratio: 1/1
+                show_name: false
+                state:
+                  - value: playing
+                    icon: mdi:pause
+                  - value: paused
+                    icon: mdi:play
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.media_next_track
+                  service_data:
+                    entity_id: media_player.family_room
+                icon: mdi:fast-forward
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: call-service
+                  service: media_player.volume_up
+                  service_data:
+                    entity_id: media_player.family_room
+                icon: mdi:volume-plus
+                aspect_ratio: 1/1
+                show_name: false
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+            columns: 5
+            square: false
+          - type: grid
+            cards:
+              - type: custom:button-card
+                tap_action:
+                  action: toggle
+                entity: switch.family_room_tv
+                show_name: false
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                tap_action:
+                  action: toggle
+                entity: switch.family_room_avr
+                show_name: false
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+            columns: 2
+            square: false
+          - type: grid
+            cards:
+              - type: custom:button-card
+                icon: mdi:home
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/home
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:robot-vacuum
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/vacuum
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+              - type: custom:button-card
+                icon: mdi:light-switch
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/shelly
+                aspect_ratio: 2/0.5
+                card_mod:
+                  style: |
+                    ha-card {
+                      background-color: var(--primary-background-color);
+                      background: rgb(0, 49, 83, 0.4);
+                      box-shadow: none;
+                      }
+            columns: 3
+            square: false
+        columns: 1
+        square: false
+      - type: grid
+        cards:
+          - type: custom:upcoming-media-card
+            entity: sensor.sonarr_upcoming_media
+            title: Upcoming TV Shows
+            card_mod:
+              style: |
+                ha-card {
+                  background-color: var(--primary-background-color);
+                  background: rgb(0, 49, 83, 0.4);
+                  box-shadow: none;
+                  }
+        columns: 1
+        square: false
