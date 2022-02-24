@@ -1,0 +1,14 @@
+# id: '1621258324961'
+# alias: Sensor Switch Reset
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: switch.sensor_lights
+#   to: 'off'
+#   for: 06:00:00
+# condition: []
+# action:
+# - service: switch.turn_on
+#   target:
+#     entity_id: switch.sensor_lights
+# mode: single

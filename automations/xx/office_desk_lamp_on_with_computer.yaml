@@ -1,0 +1,16 @@
+# id: '1622338278649'
+# alias: Office Desk Lamp On With Computer
+# description: ''
+# trigger:
+# - platform: state
+#   entity_id: device_tracker.gaming_rig
+#   to: home
+# condition: []
+# action:
+# - service: light.turn_on
+#   target:
+#     entity_id: light.office_desk_lamp
+#   data:
+#     transition: 2
+#     brightness_pct: 1
+# mode: single
